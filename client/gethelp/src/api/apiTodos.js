@@ -9,3 +9,17 @@ export const getToDos = async () => {
   }
 };
 
+export const addToDo = async (addedToDo) => {
+  try {
+    const response = await fetch(`${BASE_URL}/newTodo`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(addedToDo)
+    });
+    return await response.json();
+  } catch (err) {
+    console.error(err);
+  }
+};
