@@ -1,4 +1,4 @@
-import { BASE_URL } from "../store/constants";
+import { BASE_URL } from './constants';
 
 export const getToDos = async () => {
   try {

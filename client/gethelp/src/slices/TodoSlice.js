@@ -24,6 +24,6 @@ const todoSlice = createSlice({
   }
 });
 
-export const { resetForm } = todoSlice.actions;
+export const { resetForm, setTodos, addTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;
