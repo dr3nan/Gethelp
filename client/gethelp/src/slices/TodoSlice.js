@@ -13,7 +13,9 @@ const todoSlice = createSlice({
       console.log('state', state);
     },
 
-    
+    setTodos: (state, action) => {
+      return action.payload;
+    },
   }
 });
 
