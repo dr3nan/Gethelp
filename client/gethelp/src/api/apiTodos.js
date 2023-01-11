@@ -37,7 +37,6 @@ export const deleteToDo = async (id) => {
 
 export const editToDo = async (id, updatedData) => {
   try {
-    console.log('test update', id, updatedData);
     const response = await fetch(`${BASE_URL}/todo/${id}`, {
       method: 'PUT',
       headers: {
