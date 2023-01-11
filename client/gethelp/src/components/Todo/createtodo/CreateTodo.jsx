@@ -52,7 +52,13 @@ function CreateToDo() {
             id='note'
           />
         </div>
+        <div className='buttons-create'>
+          <button type='submit'>+</button>
+          <button type='reset' onClick={handleReset}>Reset</button>
+        </div>
       </form>
     </div>
   );
 };
+
+export default CreateToDo;
