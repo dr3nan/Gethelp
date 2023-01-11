@@ -23,3 +23,14 @@ export const addToDo = async (addedToDo) => {
     console.error(err);
   }
 };
+
+export const deleteToDo = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}/todo/${id}`, {
+      method: 'DELETE'
+    });
+    return await response.json();
+  } catch (err) {
+    console.error(err);
+  }
+};
