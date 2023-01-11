@@ -18,3 +18,15 @@ const handleSubmit = async (event, dispatch) => {
   }
   event.target.reset();
 }
+
+function CreateToDo() {
+  const dispatch = useDispatch();
+
+  const handleReset = () => {
+    dispatch(resetForm);
+  }
+
+  return (
+
+  );
+};
