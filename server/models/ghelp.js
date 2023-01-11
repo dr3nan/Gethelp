@@ -24,4 +24,10 @@ const usersSchema = new mongoose.Schema({
 
 export const Users = mongoose.model('Users', usersSchema);
 
-// export default Users;
+const todosSchema = new mongoose.Schema({
+  title: String,
+  date: String,
+  note: String
+});
+
+export const Todo = mongoose.model('Todos', todosSchema);

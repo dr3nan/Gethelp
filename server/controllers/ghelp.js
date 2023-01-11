@@ -86,3 +86,62 @@ export const editMessage = async (req, res) => {
     res.status(404);
   }
 };
+
+export const getTodos = async (req, res) => {
+  try {
+    const get = await Todo.find();
+    res.status(200);
+    res.send(get);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
+export const createTodo = async (req, res) => {
+  try {
+    const post = await Todo.create(req.body);
+    res.status(201);
+    res.send(post);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
+export const deleteTodo = async (req, res) => {
+  try {
+    const del = await Todo.deleteOne({ _id: req.params.id });
+    res.status(200);
+    res.send(del);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
+export const updateTodo = async (req, res) => {
+  try {
+    const upd = await Todo.findOne({ _id: req.params.id });
+
+    if (req.body.title) {
+      upd.title = req.body.title;
+    }
+    console.log(req.body);
+
+    if (req.body.note) {
+      upd.note = req.body.note;
+    }
+
+    if (req.body.date) {
+      upd.date = req.body.date;
+    }
+
+    await upd.save();
+    res.status(201);
+    res.send(upd);
+  } catch (err) {
+    console.error(err);
+    res.status(404);
+  }
+};
