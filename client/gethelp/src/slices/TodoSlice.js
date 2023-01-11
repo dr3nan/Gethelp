@@ -16,6 +16,11 @@ const todoSlice = createSlice({
     setTodos: (state, action) => {
       return action.payload;
     },
+
+    addTodo: (state, action) => {
+      console.log('Todo added', action.payload);
+      state.push(action.payload);
+    },
   }
 });
 
