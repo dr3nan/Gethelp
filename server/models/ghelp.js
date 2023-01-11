@@ -30,4 +30,4 @@ const todosSchema = new mongoose.Schema({
   note: String
 });
 
-export const Todo = mongoose.model('Todos', todosSchema);
+export const Todos = mongoose.model('Todos', todosSchema);

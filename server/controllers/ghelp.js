@@ -1,4 +1,4 @@
-import { Tickets, Users } from '../models/ghelp.js';
+import { Tickets, Users, Todos } from '../models/ghelp.js';
 
 export const getTickets = async (req, res) => {
   try {
@@ -89,7 +89,7 @@ export const editMessage = async (req, res) => {
 
 export const getTodos = async (req, res) => {
   try {
-    const get = await Todo.find();
+    const get = await Todos.find();
     res.status(200);
     res.send(get);
   } catch (err) {
@@ -100,7 +100,7 @@ export const getTodos = async (req, res) => {
 
 export const createTodo = async (req, res) => {
   try {
-    const post = await Todo.create(req.body);
+    const post = await Todos.create(req.body);
     res.status(201);
     res.send(post);
   } catch (err) {
@@ -111,7 +111,7 @@ export const createTodo = async (req, res) => {
 
 export const deleteTodo = async (req, res) => {
   try {
-    const del = await Todo.deleteOne({ _id: req.params.id });
+    const del = await Todos.deleteOne({ _id: req.params.id });
     res.status(200);
     res.send(del);
   } catch (err) {
@@ -122,7 +122,7 @@ export const deleteTodo = async (req, res) => {
 
 export const updateTodo = async (req, res) => {
   try {
-    const upd = await Todo.findOne({ _id: req.params.id });
+    const upd = await Todos.findOne({ _id: req.params.id });
 
     if (req.body.title) {
       upd.title = req.body.title;
