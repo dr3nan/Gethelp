@@ -1,11 +1,10 @@
 import mongoose from './index.js';
 
 const ticketsSchema = new mongoose.Schema({
-  id: String,
   title: String,
+  status: String,
   messages: [
     {
-      id: String,
       message: String,
       sender: String
     }
@@ -17,6 +16,7 @@ export const Tickets = mongoose.model('Tickets', ticketsSchema);
 const usersSchema = new mongoose.Schema({
   id: String,
   name: String,
+  admin: Boolean,
   lastName: String,
   email: String,
   tickets: []

@@ -13,9 +13,9 @@ export const getTickets = async (req, res) => {
 
 export const getTicket = async (req, res) => {
   try {
-    const getOne = await Tickets.findOne({ _id: req.params.id });
+    const getOneTicket = await Tickets.findOne({ _id: req.params.id });
     res.status(200);
-    res.send(getOne);
+    res.send(getOneTicket);
   } catch (err) {
     console.error(err);
     res.status(404);
@@ -44,15 +44,29 @@ export const deleteTicket = async (req, res) => {
   }
 };
 
+export const getMessages = async (req, res) => {
+  try {
+    const getMessagesFromTicket = await Tickets.findOne(
+      { _id: req.params.id },
+      { messages: 1 }
+    );
+    res.status(200);
+    res.send(getMessagesFromTicket.messages);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
 export const createMessage = async (req, res) => {
   try {
-    const postMessage = await Tickets.findOneAndUpdate(
+    const postMessageInTicket = await Tickets.findOneAndUpdate(
       { _id: req.params.id },
       { $push: { messages: { id: req.body.id, message: req.body.message, sender: req.body.sender } } },
       { new: true }
     );
     res.status(201);
-    res.send(postMessage);
+    res.send(postMessageInTicket);
   } catch (err) {
     console.error(err);
     res.status(500);
@@ -61,14 +75,12 @@ export const createMessage = async (req, res) => {
 
 export const editMessage = async (req, res) => {
   try {
-    const updMessage = await Tickets.updateOne(
-      { _id: req.params.id, 'messages.id': req.body.messages.id },
-      { $set: { 'messages.$.message': req.body.messages.message } }
+    const updMessageInTicket = await Tickets.findOneAndUpdate(
+      { _id: req.params.id, 'messages._id': req.params.messageId },
+      { $set: { 'messages.$.message': req.body.message } }
     );
-    console.log('update message');
-    await upd.save();
     res.status(201);
-    res.send(updMessage);
+    res.send(updMessageInTicket);
   } catch (err) {
     console.error(err);
     res.status(404);
