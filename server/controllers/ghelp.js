@@ -1,4 +1,4 @@
-import { Tickets, Users } from '../models/ghelp';
+import { Tickets, Users } from '../models/ghelp.js';
 
 export const getTickets = async (req, res) => {
   try {
@@ -44,14 +44,31 @@ export const deleteTicket = async (req, res) => {
   }
 };
 
+export const createMessage = async (req, res) => {
+  try {
+    const postMessage = await Tickets.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { messages: { id: req.body.id, message: req.body.message, sender: req.body.sender } } },
+      { new: true }
+    );
+    res.status(201);
+    res.send(postMessage);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
 export const editMessage = async (req, res) => {
   try {
-    const upd = await Tickets.updateOne({ _id: req.params.id, 'messages.id': req.body.messages.id }, { $set: { 'messages.$.message': req.body.messages.message } });
+    const updMessage = await Tickets.updateOne(
+      { _id: req.params.id, 'messages.id': req.body.messages.id },
+      { $set: { 'messages.$.message': req.body.messages.message } }
+    );
     console.log('update message');
-
     await upd.save();
     res.status(201);
-    res.send(upd);
+    res.send(updMessage);
   } catch (err) {
     console.error(err);
     res.status(404);
