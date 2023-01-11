@@ -34,3 +34,19 @@ export const deleteToDo = async (id) => {
     console.error(err);
   }
 };
+
+export const editToDo = async (id, updatedData) => {
+  try {
+    console.log('test update', id, updatedData);
+    const response = await fetch(`${BASE_URL}/todo/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedData)
+    });
+    return await response.json();
+  } catch (err) {
+    console.error(err);
+  }
+};
