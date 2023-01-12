@@ -9,6 +9,16 @@ export const getTickets = async () => {
   }
 };
 
+// apifunction fr sngle ticket
+export const getTicket = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}/ticket/${id}`);
+    return await response.json()
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export const addTicket = async (addedTicket) => {
   try {
     const response = await fetch(`${BASE_URL}/newTicket`, {

@@ -35,10 +35,12 @@ const Ticket = ({ ticket }) => {
 
   const showMessages = async (ticket) => {
     try {
-      await getMessagesAPI(ticket._id);
+      console.log('ticket 2', ticket._id);
+      const ticketFromAPI = await getMessagesAPI(ticket._id); //api function for single ticket
+      // console.log('ticket', ticket);
       console.log('ticket id',ticket._id);
-      console.log('ticket messages', ticket._id.massages);
-      dispatch(setMessages(ticket._id.messages));
+      console.log('ticket messages', ticketFromAPI);
+      dispatch(setMessages(ticket._id.messages)); //dispatch set active ticket ==> params ticket form api
     } catch (err) {
       console.error(err);
     }
