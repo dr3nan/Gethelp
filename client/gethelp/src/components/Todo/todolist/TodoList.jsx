@@ -20,6 +20,14 @@ const ToDoList = () => {
   }, []);
 
   return (
-
+    <div className='todo-list'>
+      {
+        todos?.map(todo => {
+          return <ToDo key={todo._id} todo={todo} />
+        })
+      }
+    </div>
   )
 };
+
+export default ToDoList;
