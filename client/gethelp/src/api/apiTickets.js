@@ -50,6 +50,15 @@ export const editTicket = async (id, updatedData) => {
   }
 };
 
+export const getMessages = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/getMessages`);
+    return await response.json();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 export const editMessage = async (id, updatedData) => {
   try {
     const response = await fetch(`${BASE_URL}/ticket/${id}`, {
