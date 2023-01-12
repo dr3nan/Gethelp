@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
 import { setMessages } from '../../../slices/MessageSlice';
-import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI } from '../../../api/apiTickets';
+import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
 import { getMessages as getMessagesAPI } from '../../../api/apiMessages';
 
@@ -33,10 +33,10 @@ const Ticket = ({ ticket }) => {
     }
   };
 
-  const showMessages = async (ticket) => {
+  const handleShowMessages = async (ticket) => {
     try {
-      console.log('ticket 2', ticket._id);
-      const ticketFromAPI = await getMessagesAPI(ticket._id); //api function for single ticket
+      const ticketFromAPI = await getTicketFromAPI(ticket._id); //api function for single ticket
+      console.log('ticket from api', ticketFromAPI);
       // console.log('ticket', ticket);
       console.log('ticket id',ticket._id);
       console.log('ticket messages', ticketFromAPI);
@@ -69,7 +69,7 @@ const Ticket = ({ ticket }) => {
       <div className='ticket-buttons'>
         <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
         <button onClick={() => handleDelete(ticket)}>X</button>
-        <button onClick={() => showMessages(ticket)}>Show Messages</button>
+        <button onClick={() => handleShowMessages(ticket)}>Show Messages</button>
       </div>
     </div>
   )
