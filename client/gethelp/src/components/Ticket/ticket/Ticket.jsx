@@ -11,12 +11,13 @@ const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);
   const [title, setTitle] = useState(ticket.title);
+  const [status, setStatus] = useState(ticket.status);
 
   const handleEdit = async () => {
     setIsEditable(!isEditable)
     if (isEditable) {
       try {
-        const updatedTicket = { title };
+        const updatedTicket = { title, status };
         await updateTicketAPI(ticket._id, updatedTicket);
         dispatch(editTicket(updatedTicket));
       } catch (err) {
@@ -41,7 +42,7 @@ const Ticket = ({ ticket }) => {
       console.log('ticket from api', ticketFromAPI);
       // dispatch set active ticket ==> params ticket from api
       dispatch(activeTicket(ticketFromAPI));
-      navigate('/ticket')
+      navigate('/ticket', { state: { ticketId: ticket._id } })
     } catch (err) {
       console.error(err);
     }
@@ -50,6 +51,13 @@ const Ticket = ({ ticket }) => {
   return (
     <div className='solo-ticket'>
       <div className='ticket-fields'>
+        <label htmlFor='status'>Status</label>
+        <input
+          type='text'
+          readOnly={!isEditable}
+          value={status}
+          onChange={e => setStatus(e.target.value)}
+        />
         <label htmlFor='title'>Title</label>
         <input
           type='text'

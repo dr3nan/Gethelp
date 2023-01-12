@@ -9,7 +9,6 @@ const MessageList = () => {
   const dispatch = useDispatch();
 
   const messages = useSelector(state => state.messages);
-  console.log('messages', messages);
 
   const fetchMessages = async () => {
     const messagesFromDataBase = await getMessagesAPI();
@@ -20,8 +19,6 @@ const MessageList = () => {
   useEffect(() => {
     fetchMessages(messages)
   }, []);
-
-  console.log('messages:', messages);
 
   return (
     <>

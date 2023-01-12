@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateTicket from './components/Ticket/createticket/CreateTicket';
+// import CreateTicket from './components/Ticket/createticket/CreateTicket';
 import TicketList from './components/Ticket/ticketlist/TicketsList';
 import CreateToDo from './components/Todo/createtodo/CreateTodo';
 import TodoList from './components/Todo/todolist/TodoList'
@@ -13,24 +13,25 @@ function App() {
         <Routes>
           <Route path='/' element={
             <>
-              <h1>This is the main page</h1>
-              <CreateTicket />
-              <br />
-              <TicketList />
+              <h1>This is the main page, depending on who logs in, it will redirect to a different page</h1>
               <br />
             </>
           } />
           <Route path='/admin' element={
             <>
-              <h1>This is the admin ticket page where all tickets should be visible</h1>
+              <h1>This is the admin ticket page where all tickets should be visible and would have the todos</h1>
               <CreateToDo />
+              <br />
               <TodoList />
+              <br />
+              <br />
+              <TicketList />
             </>
           }
           />
           <Route path='/ticket' element={
             <>
-            <h1>Here are all the msessages from the ticket rendered</h1>
+              <h1>Here are all the msessages from the ticket rendered</h1>
               <ActiveTicket />
             </>
           }

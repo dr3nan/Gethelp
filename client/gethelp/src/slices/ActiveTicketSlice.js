@@ -7,9 +7,12 @@ const activeTicketSlice = createSlice({
   initialState,
   reducers: {
     activeTicket: (state, action) => {
-      console.log('active ticket', action.payload)
       return action.payload;
-    }
+    },
+
+    // saveMessage: (state, action) => {
+
+    // }
   }
 });
 

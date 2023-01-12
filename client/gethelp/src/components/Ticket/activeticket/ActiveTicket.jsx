@@ -1,9 +1,20 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import CreateMessage from '../../Message/createmessage/CreateMessage';
+
 
 export const ActiveTicket = function ({ ticket }) {
+  const location = useLocation();
+  const ticketId = location.state.ticketId;
   const activeTicket = useSelector(state => state.activeTicket);
+  console.log('active ticket', activeTicket);
   const ticketToRender = ticket || activeTicket;
-  console.log(ticketToRender)
+  console.log(ticketToRender);
+
+  // useEffect(() => {
+  //   console.log('active ticket', activeTicket.mesasges);
+  // }, [activeTicket])
 
   return (
     <>
@@ -19,8 +30,9 @@ export const ActiveTicket = function ({ ticket }) {
               <h1>{message.date}</h1>
             </div>
           ))}
+          <CreateMessage ticketId={ticketId} />
         </>
       )}
     </>
   )
-}
+};

@@ -2,12 +2,13 @@ import express from 'express';
 
 const router = express.Router();
 
-import { createMessage, createTicket, createTodo, deleteTicket, deleteTodo, editMessage, getMessages, getTicket, getTickets, getTodos, updateTodo } from './controllers/ghelp.js';
+import { createMessage, createTicket, createTodo, deleteTicket, deleteTodo, editMessage, getMessages, getTicket, getTickets, getTodos, updateTicket, updateTodo } from './controllers/ghelp.js';
 
 router.get('/getTickets', getTickets);
 router.get('/ticket/:id', getTicket);
 router.post('/newTicket', createTicket);
 router.delete('/ticket/:id', deleteTicket);
+router.put('/ticket/:id', updateTicket);
 
 router.post('/ticket/:id/messages/message', createMessage);
 router.put('/ticket/:id/messages/:messageId', editMessage);

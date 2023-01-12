@@ -2,7 +2,6 @@ import { BASE_URL } from './constants';
 
 export const getMessages = async (id) => {
   try {
-    console.log('id', id);
     const response = await fetch(`${BASE_URL}/ticket/${id}/messages`);
     console.log('response', response);
     return response.json();
@@ -11,9 +10,9 @@ export const getMessages = async (id) => {
   }
 };
 
-export const addMessage = async (addedMessage) => {
+export const addMessage = async (id, addedMessage) => {
   try {
-    const response = await fetch(`${BASE_URL}/newMessage`, {
+    const response = await fetch(`${BASE_URL}/ticket/${id}/messages/message`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

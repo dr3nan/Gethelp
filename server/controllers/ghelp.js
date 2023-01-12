@@ -33,6 +33,28 @@ export const createTicket = async (req, res) => {
   }
 };
 
+export const updateTicket = async (req, res) => {
+  try {
+    const upd = await Tickets.findOne({ _id: req.params.id });
+
+    if (req.body.title) {
+      upd.title = req.body.title;
+    }
+    console.log(req.body);
+
+    if (req.body.status) {
+      upd.status = req.body.status;
+    }
+
+    await upd.save();
+    res.status(201);
+    res.send(upd);
+  } catch (err) {
+    console.error(err);
+    res.status(404);
+  }
+};
+
 export const deleteTicket = async (req, res) => {
   try {
     const del = await Tickets.deleteOne({ _id: req.params.id });
