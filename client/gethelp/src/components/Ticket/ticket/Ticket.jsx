@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
-import { setMessages } from '../../../slices/MessageSlice';
 import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
-import { getMessages as getMessagesAPI } from '../../../api/apiMessages';
+import { activeTicket } from '../../../slices/ActiveTicketSlice';
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -35,12 +34,11 @@ const Ticket = ({ ticket }) => {
 
   const handleShowMessages = async (ticket) => {
     try {
-      const ticketFromAPI = await getTicketFromAPI(ticket._id); //api function for single ticket
+      // api function for single ticket
+      const ticketFromAPI = await getTicketFromAPI(ticket._id);
       console.log('ticket from api', ticketFromAPI);
-      // console.log('ticket', ticket);
-      console.log('ticket id',ticket._id);
-      console.log('ticket messages', ticketFromAPI);
-      dispatch(setMessages(ticket._id.messages)); //dispatch set active ticket ==> params ticket form api
+      // dispatch set active ticket ==> params ticket form api
+      dispatch(activeTicket(ticketFromAPI));
     } catch (err) {
       console.error(err);
     }
