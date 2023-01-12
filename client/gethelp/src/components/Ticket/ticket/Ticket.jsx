@@ -4,8 +4,10 @@ import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
 import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
 import { activeTicket } from '../../../slices/ActiveTicketSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Ticket = ({ ticket }) => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);
   const [title, setTitle] = useState(ticket.title);
@@ -39,6 +41,7 @@ const Ticket = ({ ticket }) => {
       console.log('ticket from api', ticketFromAPI);
       // dispatch set active ticket ==> params ticket from api
       dispatch(activeTicket(ticketFromAPI));
+      navigate('/ticket')
     } catch (err) {
       console.error(err);
     }
