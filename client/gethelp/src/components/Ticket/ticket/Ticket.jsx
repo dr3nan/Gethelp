@@ -57,6 +57,11 @@ const Ticket = ({ ticket }) => {
           value={message}
           onChange={e => setMessage(e.target.value)}
         />
+        <br />
+        <div className='ticket-buttons'>
+          <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
+          <button onClick={() => handleDelete(ticket)}>X</button>
+        </div>
       </div>
     </div>
   )
