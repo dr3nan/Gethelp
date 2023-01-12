@@ -6,7 +6,7 @@ const messageSlice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
-    resetForm: (state) => {
+    resetMessage: (state) => {
       state.message = '';
       console.log('new state after reset:', state);
     },
@@ -17,23 +17,23 @@ const messageSlice = createSlice({
     },
 
     addMessage: (state, action) => {
-      console.log('Ticket added', action.payload);
+      console.log('Message added', action.payload);
       state.push(action.payload);
     },
 
     deleteMessage: (state, action) => {
-      console.log('Ticket deleted', action.payload);
-      return state.filter(ticket => ticket._id !== action.payload._id);
+      console.log('Message deleted', action.payload);
+      return state.filter(message => message._id !== action.payload._id);
     },
 
     editMessage: (state, action) => {
       const messageIndex = state.findIndex(message => message._id === action.payload._id);
-      console.log('Ticket edited', messageIndex);
+      console.log('Message edited', messageIndex);
       state[messageIndex] = action.payload;
     }
   }
 });
 
-export const { resetForm, setMessages, addMessage, deleteMessage, editMessage } = messageSlice.actions;
+export const { resetMessage, setMessages, addMessage, deleteMessage, editMessage } = messageSlice.actions;
 
 export default messageSlice.reducer;
