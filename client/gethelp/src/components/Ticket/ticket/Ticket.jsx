@@ -34,27 +34,26 @@ const Ticket = ({ ticket }) => {
   return (
     <div className='solo-ticket'>
       <div className='fields-ticket'>
+        <label htmlFor='title'>Title</label>
         <input
           type='text'
           readOnly={!isEditable}
           value={title}
           onChange={e => setTitle(e.target.value)}
         />
-        <br />
-        <span
-          value={getDateFromDateString(ticket.date).toLocaleString('default', {
+        <div className='EWDate'>
+          {getDateFromDateString(ticket.date).toLocaleString('default', {
             minute: 'numeric',
             hour: 'numeric',
             day: 'numeric',
             month: 'short',
             year: 'numeric'
           })}
-        />
-        <br />
-        <div className='ticket-buttons'>
-          <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
-          <button onClick={() => handleDelete(ticket)}>X</button>
         </div>
+      </div>
+      <div className='ticket-buttons'>
+        <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
+        <button onClick={() => handleDelete(ticket)}>X</button>
       </div>
     </div>
   )

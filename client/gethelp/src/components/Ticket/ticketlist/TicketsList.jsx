@@ -7,10 +7,11 @@ import Ticket from '../ticket/Ticket';
 const TicketList = () => {
   const dispatch = useDispatch();
 
-  const tickets = useSelector(state => state.ticket);
+  const tickets = useSelector(state => state.tickets);
 
   const fetchTickets = async () => {
     const ticketsFromDataBase = await getTicketsAPI();
+    // console.log('ticketsfromDB', ticketsFromDataBase)
     dispatch(setTickets(ticketsFromDataBase))
   };
 
@@ -23,6 +24,7 @@ const TicketList = () => {
   return (
     <div className='ticket-list'>
       {
+        // (tickets && tickets.length) ? tickets.map(ticket => {
         tickets?.map(ticket => {
           return <Ticket key={ticket._id} ticket={ticket} />
         })
