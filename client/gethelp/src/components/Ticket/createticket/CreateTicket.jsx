@@ -9,7 +9,7 @@ const handleSubmit = async (event, dispatch) => {
   const ticket = {
     title: formData.get('title'),
     status: 'New',
-    date: new Date(),
+    date: new Date().toISOString().slice(0, 16),
     messages: [
       {
         message: formData.get('message'),
