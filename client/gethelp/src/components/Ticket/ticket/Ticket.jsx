@@ -37,12 +37,12 @@ const Ticket = ({ ticket }) => {
       // api function for single ticket
       const ticketFromAPI = await getTicketFromAPI(ticket._id);
       console.log('ticket from api', ticketFromAPI);
-      // dispatch set active ticket ==> params ticket form api
+      // dispatch set active ticket ==> params ticket from api
       dispatch(activeTicket(ticketFromAPI));
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   return (
     <div className='solo-ticket'>

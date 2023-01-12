@@ -9,10 +9,10 @@ export const getTickets = async () => {
   }
 };
 
-// apifunction fr sngle ticket
 export const getTicket = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/ticket/${id}`);
+    console.log('response', response);
     return await response.json()
   } catch (err) {
     console.error(err)
@@ -59,4 +59,3 @@ export const editTicket = async (id, updatedData) => {
     console.error(err);
   }
 };
-
