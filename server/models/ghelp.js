@@ -3,6 +3,7 @@ import mongoose from './index.js';
 const ticketsSchema = new mongoose.Schema({
   title: String,
   status: String,
+  date: String,
   messages: [
     {
       message: String,
