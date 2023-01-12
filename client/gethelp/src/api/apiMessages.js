@@ -1,17 +1,17 @@
 import { BASE_URL } from './constants';
 
-export const getTickets = async () => {
+export const getMessages = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/getTickets`);
+    const response = await fetch(`${BASE_URL}/getMessages`);
     return await response.json();
   } catch (err) {
     console.error(err);
   }
 };
 
-export const addTicket = async (addedToDo) => {
+export const addMessage = async (addedToDo) => {
   try {
-    const response = await fetch(`${BASE_URL}/newTicket`, {
+    const response = await fetch(`${BASE_URL}/newMessage`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -24,18 +24,7 @@ export const addTicket = async (addedToDo) => {
   }
 };
 
-export const deleteTicket = async (id) => {
-  try {
-    const response = await fetch(`${BASE_URL}/ticket/${id}`, {
-      method: 'DELETE'
-    });
-    return await response.json();
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-export const editTicket = async (id, updatedData) => {
+export const editMessage = async (id, updatedData) => {
   try {
     const response = await fetch(`${BASE_URL}/ticket/${id}`, {
       method: 'PUT',
@@ -50,3 +39,13 @@ export const editTicket = async (id, updatedData) => {
   }
 };
 
+export const deleteMessage = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}/ticket/${id}`, {
+      method: 'DELETE'
+    });
+    return await response.json();
+  } catch (err) {
+    console.error(err);
+  }
+};
