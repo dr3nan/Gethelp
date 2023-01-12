@@ -10,31 +10,31 @@ const ticketSlice = createSlice({
       state.name = '';
       state.date = '';
       state.note = '';
-      console.log('state', state);
+      console.log('new state after reset:', state);
     },
 
-    setTodos: (state, action) => {
+    setTickets: (state, action) => {
       return action.payload;
     },
 
-    addTodo: (state, action) => {
-      console.log('Todo added', action.payload);
+    addTicket: (state, action) => {
+      console.log('Ticket added', action.payload);
       state.push(action.payload);
     },
 
-    deleteTodo: (state, action) => {
-      console.log('Todo deleted', action.payload);
-      return state.filter(toDo => toDo._id !== action.payload._id);
+    deleteTicket: (state, action) => {
+      console.log('Ticket deleted', action.payload);
+      return state.filter(ticket => ticket._id !== action.payload._id);
     },
 
-    editTodo: (state, action) => {
-      const todoIndex = state.findIndex(toDo => toDo._id === action.payload._id);
-      console.log('Todo edited', todoIndex);
-      state[todoIndex] = action.payload;
+    editTicket: (state, action) => {
+      const ticketIndex = state.findIndex(ticket => ticket._id === action.payload._id);
+      console.log('Ticket edited', ticketIndex);
+      state[ticketIndex] = action.payload;
     }
   }
 });
 
-export const { resetForm, setTodos, addTodo, deleteTodo, editTodo } = todoSlice.actions;
+export const { resetForm, setTickets, addTicket, deleteTicket, editTicket } = ticketSlice.actions;
 
-export default todoSlice.reducer;
+export default ticketSlice.reducer;
