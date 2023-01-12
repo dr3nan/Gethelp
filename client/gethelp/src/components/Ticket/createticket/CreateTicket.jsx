@@ -27,7 +27,11 @@ const handleSubmit = async (event, dispatch) => {
 };
 
 const CreateTicket = () => {
+  const dispatch = useDispatch();
 
+  const handleReset = () => {
+    dispatch(resetForm);
+  }
   return (
 
   )
