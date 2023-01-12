@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
 import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI } from '../../../api/apiTickets';
+import { getDateFromDateString } from '../../../helpers/dateTools'
 
 const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const Ticket = ({ ticket }) => {
         />
         <br />
         <span
-          value={getDateFromDateString(date).toLocaleString('default', {
+          value={getDateFromDateString(ticket.date).toLocaleString('default', {
             minute: 'numeric',
             hour: 'numeric',
             day: 'numeric',
@@ -50,7 +51,15 @@ const Ticket = ({ ticket }) => {
             year: 'numeric'
           })}
         />
+        <input
+          type='text'
+          readOnly={!isEditable}
+          value={message}
+          onChange={e => setMessage(e.target.value)}
+        />
       </div>
     </div>
   )
 };
+
+export default Ticket;
