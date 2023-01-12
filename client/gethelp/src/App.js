@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path='/' element={
             <>
+              <h1>This is the main page</h1>
               <CreateTicket />
               <br />
               <TicketList />
@@ -21,28 +22,21 @@ function App() {
           } />
           <Route path='/admin' element={
             <>
+              <h1>This is the admin ticket page where all tickets should be visible</h1>
               <CreateToDo />
               <TodoList />
             </>
           }
           />
           <Route path='/ticket' element={
-            <ActiveTicket />
-          } />
+            <>
+            <h1>Here are all the msessages from the ticket rendered</h1>
+              <ActiveTicket />
+            </>
+          }
+          />
         </Routes>
       </BrowserRouter>
-      {/* <CreateTicket />
-      <br />
-      <br />
-      <TicketList />
-      <br />
-      <br /> */}
-      {/* <MessageList /> */}
-      {/* <br />
-      <br />
-      <CreateToDo /> */}
-      {/* <br />
-      <TodoList /> */}
     </div>
   );
 }
