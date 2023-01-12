@@ -8,7 +8,6 @@ const Ticket = ({ ticket }) => {
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);
   const [title, setTitle] = useState(ticket.title);
-  const [message, setMessage] = useState(ticket.message);
 
   const handleEdit = async () => {
     setIsEditable(!isEditable)
