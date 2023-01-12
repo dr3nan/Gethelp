@@ -8,7 +8,8 @@ const handleSubmit = async (event, dispatch) => {
   const formData = new FormData(event.target);
   const message = {
     message: formData.get('message'),
-    sender: 'admin'
+    sender: 'admin',
+    date: new Date().toISOString().slice(0, 16)
   }
   try {
     const data = await addMessageAPI(message);
