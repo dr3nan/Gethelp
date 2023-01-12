@@ -41,7 +41,7 @@ const Message = ({ message }) => {
           value={messageContent}
           onChange={e => setMessageContent(e.target.value)}
         />
-        <div className='EWDate'>
+        <div className='EWDate-message'>
           {getDateFromDateString(message.date).toLocaleString('default', {
             minute: 'numeric',
             hour: 'numeric',

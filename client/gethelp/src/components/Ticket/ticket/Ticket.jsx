@@ -33,7 +33,7 @@ const Ticket = ({ ticket }) => {
 
   return (
     <div className='solo-ticket'>
-      <div className='fields-ticket'>
+      <div className='ticket-fields'>
         <label htmlFor='title'>Title</label>
         <input
           type='text'
@@ -41,7 +41,7 @@ const Ticket = ({ ticket }) => {
           value={title}
           onChange={e => setTitle(e.target.value)}
         />
-        <div className='EWDate'>
+        <div className='EWDate-ticket'>
           {getDateFromDateString(ticket.date).toLocaleString('default', {
             minute: 'numeric',
             hour: 'numeric',
