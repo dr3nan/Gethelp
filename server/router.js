@@ -8,9 +8,11 @@ router.get('/getTickets', getTickets);
 router.get('/ticket/:id', getTicket);
 router.post('/newTicket', createTicket);
 router.delete('/ticket/:id', deleteTicket);
-router.post('/ticket/:id/:messages/message', createMessage);
-router.put('/ticket/:id/:messages/:messageId', editMessage);
-router.get('/ticket/:id/:messages', getMessages);
+
+router.post('/ticket/:id/messages/message', createMessage);
+router.put('/ticket/:id/messages/:messageId', editMessage);
+router.get('/ticket/:id/messages', getMessages);
+
 router.get('/getTodos', getTodos);
 router.post('/newTodo', createTodo);
 router.delete('/todo/:id', deleteTodo);

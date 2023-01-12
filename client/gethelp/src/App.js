@@ -18,6 +18,7 @@ function App() {
       <br />
       <br />
       <CreateToDo />
+      <br />
       <TodoList />
     </div>
   );

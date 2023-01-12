@@ -35,7 +35,7 @@ export const createTicket = async (req, res) => {
 
 export const deleteTicket = async (req, res) => {
   try {
-    const del = await Todo.deleteOne({ _id: req.params.id });
+    const del = await Tickets.deleteOne({ _id: req.params.id });
     res.status(200);
     res.send(del);
   } catch (err) {

@@ -9,14 +9,14 @@ export const getTickets = async () => {
   }
 };
 
-export const addTicket = async (addedToDo) => {
+export const addTicket = async (addedTicket) => {
   try {
     const response = await fetch(`${BASE_URL}/newTicket`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(addedToDo)
+      body: JSON.stringify(addedTicket)
     });
     return await response.json();
   } catch (err) {

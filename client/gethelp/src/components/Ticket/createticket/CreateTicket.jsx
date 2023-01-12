@@ -13,7 +13,8 @@ const handleSubmit = async (event, dispatch) => {
     messages: [
       {
         message: formData.get('message'),
-        sender: 'admin'
+        sender: 'admin',
+        date: new Date().toISOString().slice(0, 16)
       }
     ]
   }

@@ -1,8 +1,11 @@
 import { BASE_URL } from './constants';
 
-export const getMessages = async () => {
+export const getMessages = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}/getMessages`);
+    console.log('test');
+    console.log('id', id);
+    const response = await fetch(`${BASE_URL}/${id}/messages`);
+    console.log('response', response);
     return await response.json();
   } catch (err) {
     console.error(err);

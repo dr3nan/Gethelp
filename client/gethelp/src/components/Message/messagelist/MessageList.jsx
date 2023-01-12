@@ -15,9 +15,9 @@ const MessageList = () => {
     dispatch(setMessages(messagesFromDataBase))
   };
 
-  useEffect(() => {
-    fetchMessages()
-  }, []);
+  // useEffect(() => {
+  //   fetchMessages(message._id)
+  // }, []);
 
   console.log('messages:', messages);
 
