@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { editTodo as updateTodoAPI, deleteTodo as deleteTodoAPI } from '../../../api/apiTodos';
+import { editToDo as updateTodoAPI, deleteToDo as deleteTodoAPI } from '../../../api/apiTodos';
 import { getDateFromDateString } from '../../../helpers/dateTools';
 import { deleteTodo, editTodo } from '../../../slices/TodoSlice';
 
@@ -15,7 +15,7 @@ const ToDo = ({ todo }) => {
     setIsEditable(!isEditable)
     if (isEditable) {
       try {
-        const updatedTodo = [...todo, { title, date, note }];
+        const updatedTodo = { title, date, note };
         await updateTodoAPI(todo._id, updatedTodo);
         dispatch(editTodo(updatedTodo));
       } catch (err) {
