@@ -14,7 +14,7 @@ const Ticket = ({ ticket }) => {
     setIsEditable(!isEditable)
     if (isEditable) {
       try {
-        const updatedTicket = { title, message };
+        const updatedTicket = { title };
         await updateTicketAPI(ticket._id, updatedTicket);
         dispatch(editTicket(updatedTicket));
       } catch (err) {
@@ -50,12 +50,6 @@ const Ticket = ({ ticket }) => {
             month: 'short',
             year: 'numeric'
           })}
-        />
-        <input
-          type='text'
-          readOnly={!isEditable}
-          value={message}
-          onChange={e => setMessage(e.target.value)}
         />
         <br />
         <div className='ticket-buttons'>
