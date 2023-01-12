@@ -31,5 +31,26 @@ const Ticket = ({ ticket }) => {
     }
   };
 
-  
+  return (
+    <div className='solo-ticket'>
+      <div className='fields-ticket'>
+        <input
+          type='text'
+          readOnly={!isEditable}
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
+        <br />
+        <span
+          value={getDateFromDateString(date).toLocaleString('default', {
+            minute: 'numeric',
+            hour: 'numeric',
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          })}
+        />
+      </div>
+    </div>
+  )
 };
