@@ -1,4 +1,5 @@
 import React from 'react';
+import MessageList from './components/Message/messagelist/MessageList';
 import CreateTicket from './components/Ticket/createticket/CreateTicket';
 import TicketList from './components/Ticket/ticketlist/TicketsList';
 import CreateToDo from './components/Todo/createtodo/CreateTodo';
@@ -9,7 +10,11 @@ function App() {
     <div className='App'>
       <CreateTicket />
       <br />
+      <br />
       <TicketList />
+      <br />
+      <br />
+      <MessageList />
       <br />
       <br />
       <CreateToDo />

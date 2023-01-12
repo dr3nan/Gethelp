@@ -9,14 +9,14 @@ export const getMessages = async () => {
   }
 };
 
-export const addMessage = async (addedToDo) => {
+export const addMessage = async (addedMessage) => {
   try {
     const response = await fetch(`${BASE_URL}/newMessage`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(addedToDo)
+      body: JSON.stringify(addedMessage)
     });
     return await response.json();
   } catch (err) {
