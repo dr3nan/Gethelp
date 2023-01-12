@@ -7,7 +7,8 @@ const ticketsSchema = new mongoose.Schema({
   messages: [
     {
       message: String,
-      sender: String
+      sender: String,
+      date: String
     }
   ]
 });
