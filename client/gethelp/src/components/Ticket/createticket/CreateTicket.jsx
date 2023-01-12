@@ -9,7 +9,7 @@ const handleSubmit = async (event, dispatch) => {
   const ticket = {
     title: formData.get('title'),
     status: 'New',
-    date: formData.get('date'),
+    date: new Date(),
     messages: [
       {
         message: formData.get('message'),
@@ -33,6 +33,30 @@ const CreateTicket = () => {
     dispatch(resetForm);
   }
   return (
-
+    <div className='create-ticket'>
+      <form onSubmit={event => handleSubmit(event, dispatch)}>
+        <div className='fields-create'>
+          <label htmlFor='title'>Title</label>
+          <input
+            type='text'
+            name='title'
+            id='title'
+          />
+          <br />
+          <label htmlFor='message'>Message</label>
+          <input
+            type='text'
+            name='message'
+            id='message'
+          />
+        </div>
+        <div className='create-buttons'>
+          <button type='submit'>Send</button>
+          <button type='reset' onClick={handleReset}>Reset</button>
+        </div>
+      </form>
+    </div>
   )
 };
+
+export default CreateTicket;
