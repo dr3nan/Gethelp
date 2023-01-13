@@ -1,5 +1,6 @@
 import React from 'react';
 import CreateTicket from './components/Ticket/createticket/CreateTicket';
+import './components/Ticket/createticket/CreateTicket.css';
 import TicketList from './components/Ticket/ticketlist/TicketsList';
 import CreateToDo from './components/Todo/createtodo/CreateTodo';
 import TodoList from './components/Todo/todolist/TodoList';
