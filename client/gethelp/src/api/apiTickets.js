@@ -17,7 +17,7 @@ export const getTicket = async (id) => {
   } catch (err) {
     console.error(err)
   }
-}
+};
 
 export const addTicket = async (addedTicket) => {
   try {

@@ -1,8 +1,10 @@
 import express from 'express';
+import { createMessage, editMessage, getMessages } from './controllers/messages.js';
+import { createTicket, deleteTicket, getTicket, getTickets, updateTicket } from './controllers/tickets.js';
+import { createTodo, deleteTodo, getTodos, updateTodo } from './controllers/todos.js';
+import { createUser, deleteUser, getUser } from './controllers/users.js';
 
 const router = express.Router();
-
-import { createMessage, createTicket, createTodo, deleteTicket, deleteTodo, editMessage, getMessages, getTicket, getTickets, getTodos, updateTicket, updateTodo } from './controllers/ghelp.js';
 
 router.get('/getTickets', getTickets);
 router.get('/ticket/:id', getTicket);
@@ -13,6 +15,10 @@ router.put('/ticket/:id', updateTicket);
 router.post('/ticket/:id/messages/message', createMessage);
 router.put('/ticket/:id/messages/:messageId', editMessage);
 router.get('/ticket/:id/messages', getMessages);
+
+router.get('/user/:id', getUser);
+router.post('/newUser', createUser);
+router.delete('/user/:id', deleteUser);
 
 router.get('/getTodos', getTodos);
 router.post('/newTodo', createTodo);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
 import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
@@ -46,7 +46,6 @@ const Ticket = ({ ticket }) => {
   };
   // TODO FEATURE add a function to get the number of messages to display
   // console.log('messages', ticket.messages.length());
-
   return (
     <div className='solo-ticket'>
       <div className='ticket-fields'>

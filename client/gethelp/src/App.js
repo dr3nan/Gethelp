@@ -14,20 +14,25 @@ function App() {
   const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
   console.log('User',user)
 
-  useEffect(() => {
-    const userToCreate = user && {
-      username: user.name,
-      email: user.email
+  async function getUserFromAuth0ToAPI (Auth0User) {
+    const userToCreate =  {
+      username: Auth0User.name,
+      email: Auth0User.email
     }
-    fetch('path to my server', {
+    const userCreated = await fetch ('path to my server', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(userToCreate)
     });
-  }, [user])
 
+    return await userCreated.json();
+  }
+
+  useEffect(() => {
+    user && getUserFromAuth0ToAPI(user);
+  }, [user]);
 
   return (
     <div className='App'>
