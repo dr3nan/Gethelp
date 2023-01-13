@@ -22,6 +22,21 @@ export const createUser = async (req, res) => {
   }
 };
 
+export const createTicketInUser = async (req, res) => {
+  try {
+    const addTicketToUser = await Users.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { tickets: { id: req.body.id } } },
+      { new: true }
+    );
+    res.status(201);
+    res.send(addTicketToUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
 export const deleteUser = async (req, res) => {
   try {
     const del = await Users.deleteOne({ _id: req.params.id });

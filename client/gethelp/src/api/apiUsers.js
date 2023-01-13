@@ -10,7 +10,7 @@ export const getUser = async (id) => {
   }
 };
 
-export const getUserFromAuth0ToAPI = async (Auth0User) => {
+export const getUserFromAuth0ToCreateInAPI = async (Auth0User) => {
   const userToCreate = {
     username: Auth0User.nickname,
     admin: false,
@@ -25,6 +25,21 @@ export const getUserFromAuth0ToAPI = async (Auth0User) => {
       body: JSON.stringify(userToCreate)
     });
     return await userCreated.json();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const addTicketToUser = async (id, addedTicket) => {
+  try {
+    const response = await fetch(`${BASE_URL}/user/${id}/tickets`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(addedTicket)
+    });
+    return await response.json();
   } catch (err) {
     console.error(err);
   }
