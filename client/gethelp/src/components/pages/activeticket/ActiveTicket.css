@@ -1,0 +1,12 @@
+.messages-list {
+  border: 1px solid blue;
+}
+
+.create-message-ticket {
+  border: 1px solid red;
+}
+
+.initial-message,
+.new-messages  {
+  border: 1px solid green;
+}

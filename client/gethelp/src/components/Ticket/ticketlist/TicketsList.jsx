@@ -22,7 +22,7 @@ const TicketList = () => {
     <div className='ticket-list'>
       {
         tickets?.map(ticket => {
-          return <Ticket key={ticket._id} ticket={ticket} />
+          return <Ticket key={ticket._id} ticket={ticket} className='single-ticket' />
         })
       }
     </div>

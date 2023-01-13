@@ -12,9 +12,6 @@ const Ticket = ({ ticket }) => {
   const [isEditable, setIsEditable] = useState(false);
   const [title, setTitle] = useState(ticket.title);
   const [status, setStatus] = useState(ticket.status);
-  // const [user, setUser] = useState(ticket.user);
-  const ticketUser = ticket.user;
-  console.log('users', ticketUser);
 
   const handleEdit = async () => {
     setIsEditable(!isEditable)
@@ -76,12 +73,7 @@ const Ticket = ({ ticket }) => {
             year: 'numeric'
           })}
         </div>
-        <label type='text' value={ticketUser}></label>
-        {/* <input
-          type='text'
-          readOnly={!isEditable}
-          value={user}
-          /> */}
+        <label type='text'>{ticket.user}</label>
       </div>
       <div className='ticket-buttons'>
         <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
