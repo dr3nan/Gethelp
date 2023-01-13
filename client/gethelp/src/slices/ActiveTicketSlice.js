@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
+const initialState = [];
 
 const activeTicketSlice = createSlice({
   name: 'activeTicket',
@@ -11,7 +11,7 @@ const activeTicketSlice = createSlice({
     },
 
     addMessageStore: (state, action) => {
-      state.push(action.payload);
+      state.messages.message.push(action.payload);
     }
   }
 });
