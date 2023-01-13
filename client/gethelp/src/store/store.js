@@ -1,8 +1,8 @@
-import { configureStore, } from '@reduxjs/toolkit'
-import todoReducer from '../slices/TodoSlice'
-import ticketReducer from '../slices/TicketSlice'
-import messagesReducer from '../slices/MessageSlice'
-import activeTicketReducer from '../slices/ActiveTicketSlice'
+import { configureStore, } from '@reduxjs/toolkit';
+import todoReducer from '../slices/TodoSlice';
+import ticketReducer from '../slices/TicketSlice';
+import messagesReducer from '../slices/MessageSlice';
+import activeTicketReducer from '../slices/ActiveTicketSlice';
 
 const store = configureStore({
   reducer: {

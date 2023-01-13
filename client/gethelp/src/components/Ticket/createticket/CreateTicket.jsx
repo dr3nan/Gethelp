@@ -36,7 +36,7 @@ const CreateTicket = () => {
   return (
     <div className='create-ticket'>
       <form onSubmit={event => handleSubmit(event, dispatch)}>
-        <div className='fields-create'>
+        <div className='create-fields'>
           <label htmlFor='title'>Title</label>
           <input
             type='text'

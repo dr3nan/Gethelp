@@ -15,10 +15,11 @@ const CreateMessage = () => {
     event.preventDefault();
     // we set what we are going to get from the form to be sent later
     const formData = new FormData(event.target);
-    // we receive the message from the message input, hard code the user nd get today's date
+    // we receive the message from the message input
+    // the sender should be populated with the name of whoever sends the message
     const message = {
       message: formData.get('message'),
-      sender: 'admin',
+      sender: activeTicket.sender,
       date: new Date().toISOString().slice(0, 16)
     }
     try {
