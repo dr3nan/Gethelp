@@ -12,8 +12,9 @@ const Ticket = ({ ticket }) => {
   const [isEditable, setIsEditable] = useState(false);
   const [title, setTitle] = useState(ticket.title);
   const [status, setStatus] = useState(ticket.status);
-  // const messagesNumber = useSelector(state => state.ticket._id);
-  // console.log('messages 2', messagesNumber);
+  // const [user, setUser] = useState(ticket.user);
+  const ticketUser = ticket.user;
+  console.log('users', ticketUser);
 
   const handleEdit = async () => {
     setIsEditable(!isEditable)
@@ -46,7 +47,6 @@ const Ticket = ({ ticket }) => {
       console.error(err);
     }
   };
-
   // TODO FEATURE add a function to get the number of messages to display
   // console.log('messages', ticket.messages.length());
 
@@ -76,6 +76,12 @@ const Ticket = ({ ticket }) => {
             year: 'numeric'
           })}
         </div>
+        <label type='text' value={ticketUser}></label>
+        {/* <input
+          type='text'
+          readOnly={!isEditable}
+          value={user}
+          /> */}
       </div>
       <div className='ticket-buttons'>
         <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
