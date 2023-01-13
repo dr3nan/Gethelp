@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path='/' element={
             <>
-              <h1>This is the main page, depending on who logs in, it will redirect to a different page</h1>
+              <h1>This is the main page, depending on who logs in, it will redirect to a different page once logged in</h1>
               <br />
             </>
           } />
@@ -29,7 +29,7 @@ function App() {
             </>
           }
           />
-          <Route path='/ticket' element={
+          <Route path='/ticket/:id' element={
             <>
               <h1>Here are all the msessages from the ticket rendered</h1>
               <ActiveTicket />

@@ -4,7 +4,7 @@ export const getMessages = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/ticket/${id}/messages`);
     console.log('response', response);
-    return response.json();
+    return await response.json();
   } catch (err) {
     console.error(err);
   }

@@ -18,18 +18,18 @@ const todoSlice = createSlice({
     },
 
     addTodo: (state, action) => {
-      console.log('Todo added', action.payload);
+      // console.log('Todo added', action.payload);
       state.push(action.payload);
     },
 
     deleteTodo: (state, action) => {
-      console.log('Todo deleted', action.payload);
+      // console.log('Todo deleted', action.payload);
       return state.filter(toDo => toDo._id !== action.payload._id);
     },
 
     editTodo: (state, action) => {
       const todoIndex = state.findIndex(toDo => toDo._id === action.payload._id);
-      console.log('Todo edited', todoIndex);
+      // console.log('Todo edited', todoIndex);
       state[todoIndex] = action.payload;
     }
   }

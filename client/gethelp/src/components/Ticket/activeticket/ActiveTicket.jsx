@@ -1,36 +1,40 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CreateMessage from '../../Message/createmessage/CreateMessage';
+import { getTicket as getTicketFromAPI } from '../../../api/apiTickets';
+import { useParams } from 'react-router-dom';
+import { activeTicket as setActiveTicket} from '../../../slices/ActiveTicketSlice'
 
-
-export const ActiveTicket = function ({ ticket }) {
-  const location = useLocation();
-  const ticketId = location.state.ticketId;
+export const ActiveTicket = function () {
+  const { id } = useParams();
+  const dispatch = useDispatch();
   const activeTicket = useSelector(state => state.activeTicket);
-  console.log('active ticket', activeTicket);
-  const ticketToRender = ticket || activeTicket;
-  console.log(ticketToRender);
 
-  // useEffect(() => {
-  //   console.log('active ticket', activeTicket.mesasges);
-  // }, [activeTicket])
+  const getTicket = async () => {
+    const ticket = await getTicketFromAPI(id);
+    console.log('ticket', ticket);
+    dispatch(setActiveTicket(ticket));
+  }
+
+  useEffect(() => {
+    getTicket();
+  }, [])
 
   return (
     <>
-      {ticketToRender && (
+      {activeTicket && (
         <>
-          <p>{ticketToRender.title}</p>
-          <p>{ticketToRender.status}</p>
-          <p>{ticketToRender.date}</p>
-          {ticketToRender.messages?.map((message, index) => (
+          <p>{activeTicket.title}</p>
+          <p>{activeTicket.status}</p>
+          <p>{activeTicket.date}</p>
+          {activeTicket.messages?.map((message, index) => (
             <div key={index}>
               <h1>{message.message}</h1>
               <h1>{message.sender}</h1>
               <h1>{message.date}</h1>
             </div>
           ))}
-          <CreateMessage ticketId={ticketId} />
+          <CreateMessage ticketId={id} />
         </>
       )}
     </>

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
 import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
-import { activeTicket } from '../../../slices/ActiveTicketSlice';
+import { activeTicket, setTicketId } from '../../../slices/ActiveTicketSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Ticket = ({ ticket }) => {
@@ -42,11 +42,21 @@ const Ticket = ({ ticket }) => {
       console.log('ticket from api', ticketFromAPI);
       // dispatch set active ticket ==> params ticket from api
       dispatch(activeTicket(ticketFromAPI));
-      navigate('/ticket', { state: { ticketId: ticket._id } })
+      navigate('/ticket/'+ ticket._id)
     } catch (err) {
       console.error(err);
     }
   };
+  // const handleShowMessages = async (ticket) => {
+  //   try {
+  //     const ticketFromAPI = await getTicketFromAPI(ticket._id);
+  //     dispatch(activeTicket(ticketFromAPI));
+  //     dispatch(setTicketId(ticket._id));
+  //     navigate('/ticket');
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <div className='solo-ticket'>

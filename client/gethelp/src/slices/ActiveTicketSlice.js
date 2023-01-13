@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [];
+const initialState = {};
 
 const activeTicketSlice = createSlice({
   name: 'activeTicket',
@@ -10,12 +10,12 @@ const activeTicketSlice = createSlice({
       return action.payload;
     },
 
-    // saveMessage: (state, action) => {
-
-    // }
+    setMessage: (state, action) => {
+      state.push(action.payload);
+    }
   }
 });
 
-export const { activeTicket } = activeTicketSlice.actions;
+export const { activeTicket, setTicketId } = activeTicketSlice.actions;
 
 export default activeTicketSlice.reducer;
