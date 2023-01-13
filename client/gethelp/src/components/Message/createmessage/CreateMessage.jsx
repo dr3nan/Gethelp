@@ -2,25 +2,35 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetMessage } from '../../../slices/MessageSlice';
 import { addMessage as addMessageAPI } from '../../../api/apiMessages';
-import { addMessageStore } from '../../../slices/ActiveTicketSlice';
+import { addMessageToTicket } from '../../../slices/ActiveTicketSlice';
+import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
 
 
 const CreateMessage = () => {
   const dispatch = useDispatch();
-  const activeTicket = useSelector((state) => state.activeTicket)
+  // we are receiving the active ticket from the reducer activeTicket (state), in the ActiveTicketSlice
+  const activeTicket = useSelector((state) => state.activeTicket);
+  console.log('active ticket', activeTicket.messages);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // we set what we are going to get from the form, to be sent later
     const formData = new FormData(event.target);
+    // we receive the message from the message input, hard code the user nd get today's date (not working date)
     const message = {
       message: formData.get('message'),
       sender: 'admin',
-      date: new Date().toISOString().slice(0, 16),
-      ticket: activeTicket._id
+      date: new Date().toISOString().slice(0, 16)
     }
     try {
-      const data = await addMessageAPI(activeTicket._id, message);
-      dispatch(addMessageStore(data));
+      // we receive the current ticket thanks to the call from state which includes the whole current ticket made above
+      // with its id. and we pass it to the api that creates messages (something is off here)
+      const ticket = await addMessageAPI(activeTicket._id, message);
+      // dispatch should add the new message to the addMessageToTicket reducer in the ActiveTicketSlice, not the whole ticket
+      // the whole ticket is added to state in the Ticket component through the handleShowMessage function
+      // that is what we pass the the activeTicket reducer in the ActiveTicketSlice
+      dispatch(setActiveTicket(ticket));
+      console.log('message added to ticket');
     } catch (err) {
       console.error(err);
     }
@@ -29,11 +39,12 @@ const CreateMessage = () => {
 
   const handleReset = () => {
     dispatch(resetMessage);
-  }
+  };
+
   return (
     <div className='create-message'>
       <form onSubmit={event => handleSubmit(event)}>
-        <div className='fields-create'>
+        <div className='create-fields'>
           <label htmlFor='message'>Message</label>
           <input
             type='text'

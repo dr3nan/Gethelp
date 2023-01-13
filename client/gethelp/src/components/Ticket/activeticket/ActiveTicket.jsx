@@ -29,9 +29,9 @@ export const ActiveTicket = function () {
           <p>{activeTicket.date}</p>
           {activeTicket.messages?.map((message, index) => (
             <div key={index}>
-              <h1>{message.message}</h1>
-              <h1>{message.sender}</h1>
-              <h1>{message.date}</h1>
+              <h4>{message.message}</h4>
+              <h4>{message.sender}</h4>
+              <h4>{message.date}</h4>
             </div>
           ))}
           <CreateMessage ticketId={id} />

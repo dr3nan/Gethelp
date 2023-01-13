@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
 import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
@@ -12,6 +12,8 @@ const Ticket = ({ ticket }) => {
   const [isEditable, setIsEditable] = useState(false);
   const [title, setTitle] = useState(ticket.title);
   const [status, setStatus] = useState(ticket.status);
+  // const messagesNumber = useSelector(state => state.ticket._id);
+  // console.log('messages 2', messagesNumber);
 
   const handleEdit = async () => {
     setIsEditable(!isEditable)
@@ -38,13 +40,15 @@ const Ticket = ({ ticket }) => {
   const handleShowMessages = async (ticket) => {
     try {
       const ticketFromAPI = await getTicketFromAPI(ticket._id);
-      console.log('ticket from api', ticketFromAPI);
       dispatch(activeTicket(ticketFromAPI));
       navigate('/ticket/' + ticket._id)
     } catch (err) {
       console.error(err);
     }
   };
+
+  // TODO FEATURE add a function to get the number of messages to display
+  // console.log('messages', ticket.messages.length());
 
   return (
     <div className='solo-ticket'>

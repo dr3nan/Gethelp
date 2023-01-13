@@ -84,7 +84,7 @@ export const createMessage = async (req, res) => {
   try {
     const postMessageInTicket = await Tickets.findOneAndUpdate(
       { _id: req.params.id },
-      { $push: { messages: { id: req.body.id, message: req.body.message, sender: req.body.sender } } },
+      { $push: { messages: { id: req.body.id, message: req.body.message, sender: req.body.sender, date: req.body.date } } },
       { new: true }
     );
     res.status(201);
