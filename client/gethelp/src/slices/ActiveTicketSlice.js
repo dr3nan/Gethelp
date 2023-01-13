@@ -10,12 +10,12 @@ const activeTicketSlice = createSlice({
       return action.payload;
     },
 
-    setMessage: (state, action) => {
+    addMessageStore: (state, action) => {
       state.push(action.payload);
     }
   }
 });
 
-export const { activeTicket, setTicketId } = activeTicketSlice.actions;
+export const { activeTicket, addMessageStore } = activeTicketSlice.actions;
 
 export default activeTicketSlice.reducer;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMessage, resetMessage } from '../../../slices/MessageSlice';
+import { resetMessage } from '../../../slices/MessageSlice';
 import { addMessage as addMessageAPI } from '../../../api/apiMessages';
+import { addMessageStore } from '../../../slices/ActiveTicketSlice';
 
 
 const CreateMessage = () => {
@@ -19,7 +20,7 @@ const CreateMessage = () => {
     }
     try {
       const data = await addMessageAPI(activeTicket._id, message);
-      dispatch(addMessage(data));
+      dispatch(addMessageStore(data));
     } catch (err) {
       console.error(err);
     }
