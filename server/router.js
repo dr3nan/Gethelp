@@ -2,7 +2,7 @@ import express from 'express';
 import { createMessage, editMessage, getMessages } from './controllers/messages.js';
 import { createTicket, deleteTicket, getTicket, getTickets, updateTicket } from './controllers/tickets.js';
 import { createTodo, deleteTodo, getTodos, updateTodo } from './controllers/todos.js';
-import { createTicketInUser, createUser, deleteUser, getUser } from './controllers/users.js';
+import { createTicketInUser, createUser, deleteUser, getAllUsers, getUser } from './controllers/users.js';
 
 const router = express.Router();
 
@@ -16,10 +16,11 @@ router.post('/ticket/:id/messages/message', createMessage);
 router.put('/ticket/:id/messages/:messageId', editMessage);
 router.get('/ticket/:id/messages', getMessages);
 
+router.get('/getUsers', getAllUsers);
 router.get('/user/:id', getUser);
 router.post('/newUser', createUser);
 router.delete('/user/:id', deleteUser);
-router.post('/user/:id/tickets', createTicketInUser);
+router.post('/:id/tickets', createTicketInUser);
 
 router.get('/getTodos', getTodos);
 router.post('/newTodo', createTodo);

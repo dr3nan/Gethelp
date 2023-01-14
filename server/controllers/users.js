@@ -1,5 +1,16 @@
 import Users from '../models/users.js';
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const get = await Users.find();
+    res.status(200);
+    res.send(get);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
 export const getUser = async (req, res) => {
   try {
     const get = await Users.findOne({ _id: req.params.id });
@@ -24,9 +35,11 @@ export const createUser = async (req, res) => {
 
 export const createTicketInUser = async (req, res) => {
   try {
+    const { ticket } = req.body;
+    console.log('ticket', ticket);
     const addTicketToUser = await Users.findOneAndUpdate(
       { _id: req.params.id },
-      { $push: { tickets: { id: req.body.id } } },
+      { $addToSet: { tickets: ticket } },
       { new: true }
     );
     res.status(201);
