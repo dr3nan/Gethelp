@@ -44,7 +44,7 @@ const Ticket = ({ ticket }) => {
       console.error(err);
     }
   };
-  // TODO FEATURE add a function to get the number of messages to display
+  // TODO FEATURE: add a function to get the number of messages to display
   // console.log('messages', ticket.messages.length());
   return (
     <div className='solo-ticket'>

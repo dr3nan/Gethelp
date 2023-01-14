@@ -36,13 +36,13 @@ export const createTicket = async (req, res) => {
 
 export const createTicketInUser = async (req, res) => {
   try {
-    const { title, status, user } = req.body;
+    const { title, status, user, messages } = req.body;
     const date = new Date();
-    const newTicket = await new Tickets({ title, status, date, user });
+    const newTicket = await new Tickets({ title, status, date, user, messages });
     await newTicket.save();
     await Users.findOneAndUpdate(
       { _id: user },
-      { $addToSet: { tickets: newTicket._id } },
+      { $addToSet: { tickets: newTicket } },
       { new: true }
     );
     res.status(201);
