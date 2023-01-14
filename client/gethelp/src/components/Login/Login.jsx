@@ -1,10 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getUserByEmail as getUserFromAPI } from '../../api/apiUsers';
+import { setUserFromActiveTicket } from '../../slices/ActiveTicketSlice';
 import { isUserLogged } from '../../slices/UserSlice';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event, dispatch) => {
     event.preventDefault();
@@ -12,12 +15,13 @@ const Login = () => {
     const user = {
       email: formData.get('email'),
       password: formData.get('password'),
-      isLogged: true,
-
     }
     try {
       const getUser = await getUserFromAPI(user.email);
       dispatch(isUserLogged(getUser));
+      dispatch(setUserFromActiveTicket(getUser.nickname, getUser.admin))
+      if (!getUser) navigate('/login');
+      else navigate('/ticket-list');
     } catch (err) {
       console.error(err);
     }

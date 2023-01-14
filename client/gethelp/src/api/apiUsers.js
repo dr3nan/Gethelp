@@ -37,7 +37,7 @@ export const getUserFromAuth0ToCreateInAPI = async (Auth0User) => {
     console.error(err);
   }
 };
-
+// TO FIX
 export const addTicketToUser = async (id, addedTicket) => {
   try {
     const response = await fetch(`${BASE_URL}/user/${id}/tickets/`, {
@@ -53,6 +53,7 @@ export const addTicketToUser = async (id, addedTicket) => {
   }
 };
 
+// POSSIBLE FEATURE: to be able to create users for
 // export const addUser = async (addedUser) => {
 //   try {
 //     const response = await fetch(`${BASE_URL}/newUser`, {

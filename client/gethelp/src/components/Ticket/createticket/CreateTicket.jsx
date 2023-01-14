@@ -1,34 +1,39 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTicket, resetForm } from '../../../slices/TicketSlice';
 import { addTicket as addTicketAPI } from '../../../api/apiTickets';
-
-const handleSubmit = async (event, dispatch) => {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-  const ticket = {
-    title: formData.get('title'),
-    status: 'New',
-    date: new Date().toISOString().slice(0, 16),
-    messages: [
-      {
-        message: formData.get('message'),
-        sender: 'admin',
-        date: new Date().toISOString().slice(0, 16)
-      }
-    ]
-  }
-  try {
-    const data = await addTicketAPI(ticket);
-    dispatch(addTicket(data));
-  } catch (err) {
-    console.error(err);
-  }
-  event.target.reset();
-};
+import { addTicketToUser } from '../../../api/apiUsers';
 
 const CreateTicket = () => {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
+  console.log('user', user);
+
+  const handleSubmit = async (event, dispatch) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const ticket = {
+      title: formData.get('title'),
+      status: 'New',
+      user: user.nickname,
+      date: new Date().toISOString().slice(0, 16),
+      messages: [
+        {
+          message: formData.get('message'),
+          sender: user.nickname,
+          date: new Date().toISOString().slice(0, 16)
+        }
+      ]
+    }
+    try {
+      const data = await addTicketAPI(ticket);
+      await addTicketToUser(ticket);
+      dispatch(addTicket(data));
+    } catch (err) {
+      console.error(err);
+    }
+    event.target.reset();
+  };
 
   const handleReset = () => {
     dispatch(resetForm);
