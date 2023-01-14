@@ -8,7 +8,7 @@ import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSli
 // import { editMessageInTicket as editMessage } from '../../../slices/ActiveTicketSlice';
 
 // TODO: initially added message argument
-const ActiveTicket = function () {
+const ActiveTicket = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const activeTicket = useSelector(state => state.activeTicket);

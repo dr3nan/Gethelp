@@ -3,10 +3,11 @@ import './components/Ticket/createticket/CreateTicket.css';
 import './components/Ticket/ticketlist/TicketsList.css';
 import ActiveTicket from './components/pages/activeticket/ActiveTicket';
 import './components/pages/activeticket/ActiveTicket.css';
+import './components/Login/Login.css';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 // import { useAuth0 } from '@auth0/auth0-react';
 import TicketListView from './components/pages/ticketlistview/TicketListView';
-import Login from './components/pages/login/Login';
+import LoginView from './components/pages/loginview/LoginView';
 
 function App() {
   // const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
@@ -39,7 +40,7 @@ function App() {
           <Route path='/login' element={
             <>
               <h1>This is the main page, depending on who logs in, it will redirect to a different page once logged in</h1>
-              <Login />
+              <LoginView />
               {/* {
               isAuthenticated
               ? (<div><h2>Logged In, {user.nickname}</h2><button onClick={() => { logout() }}> LOGOUT </button></div>)
