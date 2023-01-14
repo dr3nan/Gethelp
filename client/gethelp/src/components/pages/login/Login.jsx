@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-function Home() {
+const Login = async () => {
   const { isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
   const navigate = useNavigate();
 
@@ -15,6 +15,8 @@ function Home() {
   });
 
   return (
-
-  )
+    <></>
+  );
 };
+
+export default Login;

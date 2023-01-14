@@ -1,10 +1,7 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import TicketList from "../../Ticket/ticketlist/TicketsList"
-import { getToDos as getTodosFromAPI } from '../../../api/apiTodos';
-import { setTodos } from "../../../slices/TodoSlice";
 import ToDoList from "../../Todo/todolist/TodoList";
 import CreateToDo from "../../Todo/createtodo/CreateTodo";
+import CreateTicket from "../../Ticket/createticket/CreateTicket";
 
 const TicketListView = () => {
   // const dispatch = useDispatch();
@@ -27,6 +24,7 @@ const TicketListView = () => {
         <CreateToDo />
       </div>
       <div className='ticket-list-view'>
+        <CreateTicket />
         <TicketList />
       </div>
     </>

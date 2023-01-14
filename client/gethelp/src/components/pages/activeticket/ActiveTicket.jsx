@@ -5,7 +5,7 @@ import { getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { useNavigate, useParams } from 'react-router-dom';
 import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
 
-export const ActiveTicket = function () {
+const ActiveTicket = function () {
   const { id } = useParams();
   const dispatch = useDispatch();
   const activeTicket = useSelector(state => state.activeTicket);
@@ -48,3 +48,5 @@ export const ActiveTicket = function () {
     </>
   )
 };
+
+export default ActiveTicket;
