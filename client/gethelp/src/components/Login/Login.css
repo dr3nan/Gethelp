@@ -1,0 +1,147 @@
+.login-form {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  /* border: 1px solid pink; */
+  padding: 20px;
+}
+
+.user-login {
+  display: flex;
+  /* border: 1px solid green; */
+  background-color: rgb(220, 138, 152);
+  border-radius: 40px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form-information {
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  /* border: 1px solid blue; */
+}
+
+#login-header {
+  padding: 0 0 0 4px;
+}
+
+.email-input {
+  display: flex;
+  /* border: 1px solid red; */
+  height: 45px;
+  font-size: 17px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.email-input .inputEmail {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 17px;
+  /* color: rgb(74, 74, 74); */
+  color: white;
+  border-bottom: 1px solid #777;
+  box-shadow: none !important;
+  padding: 17px 6px 0px 6px;
+}
+
+.email-input .inputEmail:focus {
+  border-color: none;
+  padding: 17px 6px 0px 7px;
+}
+
+.email-input .floating-label-email {
+  position: absolute;
+  pointer-events: none;
+  top: 20px;
+  left: 6px;
+  transition: 0.2s ease all;
+}
+
+.email-input input:focus~.floating-label-email,
+.email-input input:not(:focus):valid~.floating-label-email {
+  top: 0px;
+  left: 6px;
+  color: rgba(0, 0, 0, 0.423);
+  font-size: 14px;
+  opacity: 1;
+}
+
+.password-input {
+  display: flex;
+  /* border: 1px solid red; */
+  height: 45px;
+  font-size: 17px;
+  /* color: white; */
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.password-input .inputPassword {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 17px;
+  /* color: rgb(74, 74, 74); */
+  color: white;
+  border-bottom: 1px solid #777;
+  box-shadow: none !important;
+  padding: 17px 6px 0px 7px;
+}
+
+.password-input .inputPassword:focus {
+  border-color: none;
+  padding: 17px 6px 0px 7px;
+}
+
+.password-input .floating-label-password {
+  position: absolute;
+  pointer-events: none;
+  top: 20px;
+  left: 6px;
+  transition: 0.2s ease all;
+}
+
+.password-input input:focus~.floating-label-password,
+.password-input input:not(:focus):valid~.floating-label-password {
+  top: 0px;
+  left: 6px;
+  color: rgba(0, 0, 0, 0.423);
+  font-size: 14px;
+  opacity: 1;
+}
+
+.login {
+  margin-top: 15px;
+  margin-left: 3px;
+  border: none;
+  background-color: black;
+  color: white;
+  height: 40px;
+  width: 65px;
+  border-radius: 30px;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 1px solid red;< */
+}
+
+.register {
+  border: none;
+  background-color: transparent;
+}
+
+.forgot {
+  border: none;
+  background-color: transparent;
+}

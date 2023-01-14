@@ -12,10 +12,16 @@ const activeTicketSlice = createSlice({
 
     addMessageToTicket: (state, action) => {
       state.messages.push(action.payload);
+    },
+
+    editMessageInTicket: (state, action) => {
+      const messageIndex = state.findIndex(message => message._id === action.payload._id);
+      // console.log('Message edited', messageIndex);
+      state[messageIndex] = action.payload;
     }
   }
 });
 
-export const { activeTicket, addMessageToTicket } = activeTicketSlice.actions;
+export const { activeTicket, addMessageToTicket, editMessageInTicket } = activeTicketSlice.actions;
 
 export default activeTicketSlice.reducer;

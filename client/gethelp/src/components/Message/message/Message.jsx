@@ -50,6 +50,7 @@ const Message = ({ message }) => {
             year: 'numeric'
           })}
         </div>
+        <label type='text'>{message.sender}</label>
       </div>
       <div className='message-buttons'>
         <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
