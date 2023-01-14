@@ -22,6 +22,30 @@ export const getUser = async (req, res) => {
   }
 };
 
+export const getUserByMail = async (req, res) => {
+  try {
+    const { email } = req.params;
+    console.log('email', email);
+    const user = await Users.findOne({ email });
+    res.status(200);
+    res.send(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
+// export const getUserByMailTest = async (req, res) => {
+//   try {
+//     const get = await Users.find();
+//     res.status(200);
+//     res.send(get);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500);
+//   }
+// };
+
 export const createUser = async (req, res) => {
   try {
     const post = await Users.create(req.body);

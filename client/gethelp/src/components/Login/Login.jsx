@@ -1,7 +1,10 @@
 import React from 'react';
-import { getUser as getUserFromAPI } from '../../api/apiUsers';
+import { useDispatch } from 'react-redux';
+import { getUserByEmail as getUserFromAPI } from '../../api/apiUsers';
+import { isUserLogged } from '../../slices/UserSlice';
 
 const Login = () => {
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event, dispatch) => {
     event.preventDefault();
@@ -9,18 +12,19 @@ const Login = () => {
     const user = {
       email: formData.get('email'),
       password: formData.get('password'),
-      isLogged: Boolean
+      isLogged: true,
+
     }
     try {
-      const getUser = await getUserFromAPI(user);
-      dispatch(activeUser(getUser));
+      const getUser = await getUserFromAPI(user.email);
+      dispatch(isUserLogged(getUser));
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <form className='user-login'>
+    <form className='user-login' onSubmit={event => handleSubmit(event, dispatch)}>
       <div className='form-information'>
         <h1 id='login-header'>Login</h1>
         <div className='email-input'>
@@ -35,13 +39,13 @@ const Login = () => {
         </div>
         <div className='password-input'>
           <input
-            type='test'
+            type='password'
             name='password'
             id='password'
             className='inputPassword'
             required
           />
-          <span class='floating-label-password'>Password</span>
+          <span className='floating-label-password'>Password</span>
         </div>
         {/* <label>
           <input
@@ -51,11 +55,7 @@ const Login = () => {
           />
           Remember me
         </label> */}
-        <input
-          className='login'
-          type='submit'
-          value='Login'
-        />
+        <button type='submit'>Send</button>
       </div>
       <div className='buttons'>
         {/* <input type='submit' id='register-btn' value='Register' className='register' /> */}
