@@ -33,22 +33,23 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const createTicketInUser = async (req, res) => {
-  try {
-    const { ticket } = req.body;
-    console.log('ticket', ticket);
-    const addTicketToUser = await Users.findOneAndUpdate(
-      { _id: req.params.id },
-      { $addToSet: { tickets: ticket } },
-      { new: true }
-    );
-    res.status(201);
-    res.send(addTicketToUser);
-  } catch (err) {
-    console.error(err);
-    res.status(500);
-  }
-};
+// export const createTicketInUser = async (req, res) => {
+//   try {
+//     const { ticket } = req.body;
+//     console.log('ticket', ticket);
+//     const addTicketToUser = await Users.findOneAndUpdate(
+//       { _id: req.params.id },
+//       { $addToSet: { tickets: ticket } },
+//       { new: true }
+//     );
+//     if (!addTicketToUser) return res.status(404).send({ error: 'User not found' });
+//     res.status(201);
+//     res.send(addTicketToUser);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send({ error: 'Error adding ticket' });
+//   }
+// };
 
 export const deleteUser = async (req, res) => {
   try {
