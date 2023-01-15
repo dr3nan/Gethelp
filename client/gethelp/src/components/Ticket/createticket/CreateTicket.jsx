@@ -7,9 +7,6 @@ import { createTicketInUser } from '../../../api/apiTickets';
 const CreateTicket = () => {
   const dispatch = useDispatch();
   const { user } = useSelector(({ user }) => user);
-  console.log('user initial state', user.user);
-  console.log('user id', user._id);
-  console.log('user tickets', user.tickets);
 
   const handleSubmit = async (event, dispatch) => {
     event.preventDefault();

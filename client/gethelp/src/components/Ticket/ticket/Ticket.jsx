@@ -8,8 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Ticket = ({ ticket }) => {
   const { user } = useSelector(({ user }) => user);
-  console.log('user in tickets list', user._id);
-  console.log('ticket id in tickets list', ticket._id);
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);

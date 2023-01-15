@@ -11,28 +11,6 @@ import TicketListView from './components/pages/ticketlistview/TicketListView';
 import LoginView from './components/pages/loginview/LoginView';
 
 function App() {
-  // const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
-  // console.log('User',user)
-
-  // async function getUserFromAuth0ToAPI (Auth0User) {
-  //   const userToCreate =  {
-  //     username: Auth0User.name,
-  //     email: Auth0User.email
-  //   }
-  //   const userCreated = await fetch ('path to my server', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(userToCreate)
-  //   });
-
-  //   return await userCreated.json();
-  // }
-
-  // useEffect(() => {
-  //   user && getUserFromAuth0ToAPI(user);
-  // }, [user]);
 
   return (
     <div className='App'>

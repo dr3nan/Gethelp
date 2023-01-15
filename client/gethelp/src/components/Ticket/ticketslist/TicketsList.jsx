@@ -25,6 +25,7 @@ const TicketList = () => {
   }, [user]);
 
   if (user === null) return user;
+
   return (
     <div className='ticket-list'>
       {user.admin ? (
@@ -37,12 +38,10 @@ const TicketList = () => {
       ) :
         (
           <>
-            <div className='single-ticket'>
-              <h2>Usuer Tickets</h2>
-              {user.tickets.map((ticket) => (
-                <Ticket key={ticket._id} ticket={ticket} />
-              ))}
-            </div>
+            <h2>Usuer Tickets</h2>
+            {user.tickets.map((ticket) => (
+              <Ticket key={ticket._id} ticket={ticket} />
+            ))}
           </>
         )
       }

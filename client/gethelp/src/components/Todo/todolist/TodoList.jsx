@@ -8,7 +8,8 @@ import ToDo from '../todo/Todo';
 const ToDoList = () => {
   const dispatch = useDispatch();
 
-  const todos = useSelector(state => state.todo);
+  // const todos = useSelector(state => state.todo);
+  const { todos } = useSelector(({ todo }) => todo);
 
   const fetchTodos = async () => {
     const todosFromDB = await getTodosAPI();

@@ -35,14 +35,14 @@ export const addTicket = async (addedTicket) => {
 };
 
 // TO FIX
-export const createTicketInUser = async (id, addedTicket) => {
+export const createTicketInUser = async (id, ticketToAdd) => {
   try {
-    const response = await fetch(`${BASE_URL}/user/${id}/tickets/${addedTicket}`, {
+    const response = await fetch(`${BASE_URL}/user/${id}/tickets/${ticketToAdd}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(addedTicket)
+      body: JSON.stringify(ticketToAdd)
     });
     return await response.json();
   } catch (err) {
