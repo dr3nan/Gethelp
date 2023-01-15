@@ -40,7 +40,7 @@ export const getUserFromAuth0ToCreateInAPI = async (Auth0User) => {
 // TO FIX
 export const addTicketToUser = async (id, addedTicket) => {
   try {
-    const response = await fetch(`${BASE_URL}/user/${id}/tickets/`, {
+    const response = await fetch(`${BASE_URL}/user/${id}/tickets`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

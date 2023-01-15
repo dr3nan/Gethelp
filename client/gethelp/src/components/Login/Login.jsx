@@ -19,7 +19,7 @@ const Login = () => {
     try {
       const getUser = await getUserFromAPI(user.email);
       dispatch(isUserLogged(getUser));
-      dispatch(setUserFromActiveTicket(getUser.nickname, getUser.admin))
+      // dispatch(setUserFromActiveTicket(getUser.nickname, getUser.admin))
       if (!getUser) navigate('/login');
       else navigate('/ticket-list');
     } catch (err) {

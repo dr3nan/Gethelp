@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/getTickets', getTickets);
 router.get('/ticket/:id', getTicket);
 router.post('/newTicket', createTicket);
-router.post('/newTicketInUser', createTicketInUser);
+router.post('/user/:id/tickets', createTicketInUser);
 router.delete('/ticket/:id', deleteTicket);
 router.put('/ticket/:id', updateTicket);
 

@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-const initialState = [];
+// TODO: Change to object
+const initialState = {
+  user: null
+};
 
 const userLoggedSlice = createSlice({
   name: 'user',
@@ -11,7 +13,7 @@ const userLoggedSlice = createSlice({
     // },
 
     isUserLogged: (state, action) => {
-      state.push(action.payload);
+      state.user = action.payload;
     }
   }
 });

@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [];
+// TODO: define as object
+const initialState = {
+  // object for activeTicket, object for activeUser
+};
 
 const activeTicketSlice = createSlice({
   name: 'activeTicket',

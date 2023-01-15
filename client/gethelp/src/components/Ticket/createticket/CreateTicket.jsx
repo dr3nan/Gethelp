@@ -7,7 +7,9 @@ import { addTicketToUser } from '../../../api/apiUsers';
 const CreateTicket = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
-  console.log('user', user);
+  console.log('user initial state', user.user);
+  console.log('user id', user.user.id);
+  console.log('user tickets', user.user.tickets);
 
   const handleSubmit = async (event, dispatch) => {
     event.preventDefault();
@@ -15,19 +17,19 @@ const CreateTicket = () => {
     const ticket = {
       title: formData.get('title'),
       status: 'New',
-      user: user.nickname,
+      user: user.user.nickname,
       date: new Date().toISOString().slice(0, 16),
       messages: [
         {
           message: formData.get('message'),
-          sender: user.nickname,
+          sender: user.user.nickname,
           date: new Date().toISOString().slice(0, 16)
         }
       ]
     }
     try {
       const data = await addTicketAPI(ticket);
-      await addTicketToUser(ticket);
+      await addTicketToUser(user.user._id, ticket);
       dispatch(addTicket(data));
     } catch (err) {
       console.error(err);
@@ -37,7 +39,8 @@ const CreateTicket = () => {
 
   const handleReset = () => {
     dispatch(resetForm);
-  }
+  };
+  
   return (
     <div className='create-ticket'>
       <form onSubmit={event => handleSubmit(event, dispatch)}>

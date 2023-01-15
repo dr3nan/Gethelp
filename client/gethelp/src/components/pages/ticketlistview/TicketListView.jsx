@@ -11,13 +11,16 @@ const TicketListView = () => {
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
 
-  const fetchUser = async () => {
-    const userFromDataBase = await getUserByEmail(user.email);
-    dispatch(setUserFromActiveTicket(userFromDataBase));
+  console.log('tickets user', user.tickets);
+
+  const fetchUserTickets = async () => {
+    // TODO: fetch ticket from user
+    const ticketsFromUserDB = await getUserByEmail(user.email);
+    dispatch(setUserFromActiveTicket(ticketsFromUserDB));
   };
 
   useEffect(() => {
-    fetchUser()
+    fetchUserTickets()
   }, []);
   // const dispatch = useDispatch();
 

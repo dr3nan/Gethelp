@@ -8,6 +8,7 @@ const TicketList = () => {
   const dispatch = useDispatch();
 
   const tickets = useSelector(state => state.tickets);
+  console.log('tickets', tickets);
 
   const fetchTickets = async () => {
     const ticketsFromDataBase = await getTicketsAPI();
