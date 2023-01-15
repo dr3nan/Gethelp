@@ -1,6 +1,7 @@
 import React from 'react';
 import './components/Ticket/createticket/CreateTicket.css';
 import './components/Ticket/ticketslist/TicketsList.css';
+import './components/Ticket/ticket/Ticket.css';
 import ActiveTicket from './components/pages/activeticket/ActiveTicket';
 import './components/pages/activeticket/ActiveTicket.css';
 import './components/Login/Login.css';

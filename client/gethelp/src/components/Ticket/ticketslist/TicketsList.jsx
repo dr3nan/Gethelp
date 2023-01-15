@@ -31,16 +31,18 @@ const TicketList = () => {
         <>
           <h2>Admin Tickets</h2>
           {adminTickets.map((ticket) => (
-            <Ticket key={ticket._id} ticket={ticket} className='single-ticket' />
+            <Ticket key={ticket._id} ticket={ticket} />
           ))}
         </>
       ) :
         (
           <>
-            <h2>Usuer Tickets</h2>
-            {user.tickets.map((ticket) => (
-              <Ticket key={ticket._id} ticket={ticket} className='single-ticket' />
-            ))}
+            <div className='single-ticket'>
+              <h2>Usuer Tickets</h2>
+              {user.tickets.map((ticket) => (
+                <Ticket key={ticket._id} ticket={ticket} />
+              ))}
+            </div>
           </>
         )
       }

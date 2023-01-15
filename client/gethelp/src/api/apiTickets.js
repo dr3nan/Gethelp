@@ -37,7 +37,7 @@ export const addTicket = async (addedTicket) => {
 // TO FIX
 export const createTicketInUser = async (id, addedTicket) => {
   try {
-    const response = await fetch(`${BASE_URL}/user/${id}/tickets`, {
+    const response = await fetch(`${BASE_URL}/user/${id}/tickets/${addedTicket}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -53,6 +53,17 @@ export const createTicketInUser = async (id, addedTicket) => {
 export const deleteTicket = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/ticket/${id}`, {
+      method: 'DELETE'
+    });
+    return await response.json();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const deleteTicketFromUser = async (userId, ticketId) => {
+  try {
+    const response = await fetch(`${BASE_URL}/user/${userId}/tickets/${ticketId}`, {
       method: 'DELETE'
     });
     return await response.json();

@@ -8,10 +8,8 @@ import { setUserFromActiveTicket } from "../../../slices/ActiveTicketSlice";
 import { getUserByEmail } from "../../../api/apiUsers";
 
 const TicketListView = () => {
-  const user = useSelector(state => state.user.user);
+  const { user } = useSelector(({ user }) => user);
   const dispatch = useDispatch();
-
-  // console.log('tickets user', user.tickets);
 
   const fetchUserTickets = async () => {
     // TODO: fetch ticket from user
@@ -38,8 +36,11 @@ const TicketListView = () => {
   return (
     <>
       <div className='todo-list'>
-        <ToDoList />
-        <CreateToDo />
+        {user.admin ? (
+          <>
+            {<ToDoList /> && <CreateToDo />}
+          </>
+        ) : null}
       </div>
       <div className='ticket-list-view'>
         <CreateTicket />

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
-import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI } from '../../../api/apiTickets';
+import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI, deleteTicketFromUser as deleteTicketUserAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
 import { activeTicket } from '../../../slices/ActiveTicketSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Ticket = ({ ticket }) => {
-  const user = useSelector(state => state.user.user);
-  console.log('user in tickets list', user);
+  const { user } = useSelector(({ user }) => user);
+  console.log('user in tickets list', user._id);
+  console.log('ticket id in tickets list', ticket._id);
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);
@@ -28,9 +29,9 @@ const Ticket = ({ ticket }) => {
     }
   };
 
-  const handleDelete = async (ticket) => {
+  const handleDelete = async (user, ticket) => {
     try {
-      await deleteTicketAPI(ticket._id);
+      await deleteTicketUserAPI(user._id, ticket._id);
       await deleteTicketAPI(ticket._id);
       dispatch(deleteTicket(ticket));
     } catch (err) {
@@ -79,7 +80,7 @@ const Ticket = ({ ticket }) => {
       </div>
       <div className='ticket-buttons'>
         <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
-        <button onClick={() => handleDelete(ticket)}>X</button>
+        <button onClick={() => handleDelete(user, ticket)}>X</button>
         <button onClick={() => handleShowMessages(ticket)}>Show Messages</button>
       </div>
     </div>

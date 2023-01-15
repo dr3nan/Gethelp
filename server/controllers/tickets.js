@@ -37,10 +37,8 @@ export const createTicket = async (req, res) => {
 export const createTicketInUser = async (req, res) => {
   try {
     const { title, status, date, user } = req.body;
-    console.log('body of ticket', req.body);
     const newTicket = new Tickets({ title, status, date, user });
     await newTicket.save();
-    console.log('user from api call', user);
     await Users.findOneAndUpdate(
       { _id: req.params.id },
       { $addToSet: { tickets: newTicket } },
@@ -51,9 +49,8 @@ export const createTicketInUser = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500);
-    res.send({ error: 'Error creating ticket' });
   }
-}
+};
 
 export const updateTicket = async (req, res) => {
   try {
@@ -61,13 +58,11 @@ export const updateTicket = async (req, res) => {
 
     if (req.body.title) {
       upd.title = req.body.title;
-    }
-    console.log(req.body);
+    };
 
     if (req.body.status) {
       upd.status = req.body.status;
-    }
-
+    };
     await upd.save();
     res.status(201);
     res.send(upd);
@@ -82,6 +77,22 @@ export const deleteTicket = async (req, res) => {
     const del = await Tickets.deleteOne({ _id: req.params.id });
     res.status(200);
     res.send(del);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
+export const deleteTicketFromUser = async (req, res) => {
+  try {
+    const ticketToDelete = await Tickets.findOneAndDelete({ _id: req.params.id });
+    await Users.findOneAndUpdate(
+      { tickets: req.params.id },
+      { $pull: { tickets: req.params.id } },
+      { new: true }
+    );
+    res.status(200);
+    res.send(ticketToDelete);
   } catch (err) {
     console.error(err);
     res.status(500);

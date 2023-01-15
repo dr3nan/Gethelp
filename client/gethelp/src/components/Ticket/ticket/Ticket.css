@@ -1,0 +1,7 @@
+.solo-ticket {
+  border-radius: 15px;
+  background-color: white;
+  display: flex;
+  width: 96%;
+  margin-bottom: 10px;
+}
