@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [];
+const initialState = {};
 
 const ticketSlice = createSlice({
   name: 'tickets',
@@ -20,7 +20,7 @@ const ticketSlice = createSlice({
 
     addTicket: (state, action) => {
       // console.log('Ticket added', action.payload);
-      state.push(action.payload);
+      state.ticket = action.payload;
     },
 
     deleteTicket: (state, action) => {

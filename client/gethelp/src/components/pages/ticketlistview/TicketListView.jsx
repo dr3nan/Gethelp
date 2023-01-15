@@ -1,4 +1,4 @@
-import TicketList from "../../Ticket/ticketlist/TicketsList"
+import TicketList from "../../Ticket/ticketslist/TicketsList"
 import ToDoList from "../../Todo/todolist/TodoList";
 import CreateToDo from "../../Todo/createtodo/CreateTodo";
 import CreateTicket from "../../Ticket/createticket/CreateTicket";

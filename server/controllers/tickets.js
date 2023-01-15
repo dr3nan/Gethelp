@@ -37,12 +37,13 @@ export const createTicket = async (req, res) => {
 export const createTicketInUser = async (req, res) => {
   try {
     const { title, status, date, user } = req.body;
-    console.log('body of message', req.body);
+    console.log('body of ticket', req.body);
     // const newDate = new Date();
-    const newTicket = new Tickets({ title, status, date, user, messages });
+    const newTicket = new Tickets({ title, status, date, user });
     await newTicket.save();
+    console.log('user from api call', user);
     await Users.findOneAndUpdate(
-      { _id: user },
+      { _id: req.params.id },
       { $addToSet: { tickets: newTicket } },
       { new: true }
     );

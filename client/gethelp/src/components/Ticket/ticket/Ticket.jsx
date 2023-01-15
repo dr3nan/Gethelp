@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
 import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
@@ -7,6 +7,8 @@ import { activeTicket } from '../../../slices/ActiveTicketSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Ticket = ({ ticket }) => {
+  const user = useSelector(state => state.user);
+  console.log('user in tickets list', user.user);
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);
@@ -44,7 +46,7 @@ const Ticket = ({ ticket }) => {
       console.error(err);
     }
   };
-  // TODO FEATURE: add a function to get the number of messages to display
+  // FEATURE: add a function to get the number of messages to display
   // console.log('messages', ticket.messages.length());
   return (
     <div className='solo-ticket'>

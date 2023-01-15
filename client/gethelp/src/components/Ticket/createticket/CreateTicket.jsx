@@ -2,13 +2,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTicket, resetForm } from '../../../slices/TicketSlice';
 import { addTicket as addTicketAPI } from '../../../api/apiTickets';
-import { addTicketToUser } from '../../../api/apiUsers';
+import { createTicketInUser } from '../../../api/apiTickets';
 
 const CreateTicket = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
   console.log('user initial state', user.user);
-  console.log('user id', user.user.id);
+  console.log('user id', user.user._id);
   console.log('user tickets', user.user.tickets);
 
   const handleSubmit = async (event, dispatch) => {
@@ -29,9 +29,9 @@ const CreateTicket = () => {
     }
     try {
       // TODO: api call needs to add ticket to user
-      const ticketAPI = await addTicketAPI(ticket);
-      await addTicketToUser(user.user._id, ticket);
-      dispatch(addTicket(ticketAPI));
+      const ticketInUserAPI = await addTicketAPI(ticket);
+      await createTicketInUser(user.user._id, ticket);
+      dispatch(addTicket(ticketInUserAPI));
     } catch (err) {
       console.error(err);
     }
