@@ -28,9 +28,10 @@ const CreateTicket = () => {
       ]
     }
     try {
-      const data = await addTicketAPI(ticket);
+      // TODO: api call needs to add ticket to user
+      const ticketAPI = await addTicketAPI(ticket);
       await addTicketToUser(user.user._id, ticket);
-      dispatch(addTicket(data));
+      dispatch(addTicket(ticketAPI));
     } catch (err) {
       console.error(err);
     }
@@ -40,7 +41,7 @@ const CreateTicket = () => {
   const handleReset = () => {
     dispatch(resetForm);
   };
-  
+
   return (
     <div className='create-ticket'>
       <form onSubmit={event => handleSubmit(event, dispatch)}>
