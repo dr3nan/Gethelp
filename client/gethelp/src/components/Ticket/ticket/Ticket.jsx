@@ -7,8 +7,8 @@ import { activeTicket } from '../../../slices/ActiveTicketSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Ticket = ({ ticket }) => {
-  const user = useSelector(state => state.user);
-  console.log('user in tickets list', user.user);
+  const user = useSelector(state => state.user.user);
+  console.log('user in tickets list', user);
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);
@@ -30,6 +30,7 @@ const Ticket = ({ ticket }) => {
 
   const handleDelete = async (ticket) => {
     try {
+      await deleteTicketAPI(ticket._id);
       await deleteTicketAPI(ticket._id);
       dispatch(deleteTicket(ticket));
     } catch (err) {

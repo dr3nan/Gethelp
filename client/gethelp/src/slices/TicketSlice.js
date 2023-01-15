@@ -1,16 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
+const initialState = [];
 
 const ticketSlice = createSlice({
   name: 'tickets',
   initialState,
   reducers: {
     resetForm: (state) => {
-      state.name = '';
-      state.date = '';
-      state.note = '';
-      console.log('new state after reset:', state);
+      state.name = ''
+      state.date = ''
+      state.note = ''
     },
 
     setTickets: (state, action) => {
@@ -20,7 +19,7 @@ const ticketSlice = createSlice({
 
     addTicket: (state, action) => {
       // console.log('Ticket added', action.payload);
-      state.ticket = action.payload;
+      state.push(action.payload);
     },
 
     deleteTicket: (state, action) => {

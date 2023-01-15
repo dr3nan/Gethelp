@@ -8,10 +8,10 @@ import { setUserFromActiveTicket } from "../../../slices/ActiveTicketSlice";
 import { getUserByEmail } from "../../../api/apiUsers";
 
 const TicketListView = () => {
-  const user = useSelector(state => state.user);
+  const user = useSelector(state => state.user.user);
   const dispatch = useDispatch();
 
-  console.log('tickets user', user.tickets);
+  // console.log('tickets user', user.tickets);
 
   const fetchUserTickets = async () => {
     // TODO: fetch ticket from user

@@ -7,10 +7,10 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     resetForm: (state) => {
-      state.name = '';
-      state.date = '';
-      state.note = '';
-      console.log('state', state);
+      state.name = ''
+      state.date = ''
+      state.note = ''
+      // console.log('state', state);
     },
 
     setTodos: (state, action) => {

@@ -6,10 +6,10 @@ import { createTicketInUser } from '../../../api/apiTickets';
 
 const CreateTicket = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user);
+  const { user } = useSelector(({ user }) => user);
   console.log('user initial state', user.user);
-  console.log('user id', user.user._id);
-  console.log('user tickets', user.user.tickets);
+  console.log('user id', user._id);
+  console.log('user tickets', user.tickets);
 
   const handleSubmit = async (event, dispatch) => {
     event.preventDefault();
@@ -17,12 +17,12 @@ const CreateTicket = () => {
     const ticket = {
       title: formData.get('title'),
       status: 'New',
-      user: user.user.nickname,
+      user: user.nickname,
       date: new Date().toISOString().slice(0, 16),
       messages: [
         {
           message: formData.get('message'),
-          sender: user.user.nickname,
+          sender: user.nickname,
           date: new Date().toISOString().slice(0, 16)
         }
       ]
@@ -30,7 +30,7 @@ const CreateTicket = () => {
     try {
       // TODO: api call needs to add ticket to user
       const ticketInUserAPI = await addTicketAPI(ticket);
-      await createTicketInUser(user.user._id, ticket);
+      await createTicketInUser(user._id, ticket);
       dispatch(addTicket(ticketInUserAPI));
     } catch (err) {
       console.error(err);

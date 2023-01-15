@@ -11,12 +11,12 @@ const ToDoList = () => {
   const todos = useSelector(state => state.todo);
 
   const fetchTodos = async () => {
-    const todosFromDB = await getTodosAPI()
-    dispatch(setTodos(todosFromDB))
+    const todosFromDB = await getTodosAPI();
+    dispatch(setTodos(todosFromDB));
   };
 
   useEffect(() => {
-    fetchTodos()
+    fetchTodos();
   }, []);
 
   return (

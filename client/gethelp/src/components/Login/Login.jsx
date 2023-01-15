@@ -18,6 +18,7 @@ const Login = () => {
     }
     try {
       const getUser = await getUserFromAPI(user.email);
+      console.log('user from api', getUser);
       dispatch(isUserLogged(getUser));
       // dispatch(setUserFromActiveTicket(getUser.nickname, getUser.admin))
       if (!getUser) navigate('/login');

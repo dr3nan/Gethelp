@@ -7,27 +7,42 @@ import Ticket from '../ticket/Ticket';
 const TicketList = () => {
   const dispatch = useDispatch();
 
-  // const tickets = useSelector(state => state.tickets);
-  const userTickets = useSelector(state => state.user.user.tickets);
-  console.log('ticket list view component');
-  console.log('user tickets', userTickets);
-  // console.log('user tickets', userTickets.user.tickets);
+  // we retrieve current user tickets from store
+  const { user } = useSelector(({ user }) => user);
 
-  // const fetchTickets = async () => {
-  //   const ticketsFromDataBase = await getTicketsAPI();
-  //   dispatch(setTickets(ticketsFromDataBase));
-  // };
+  // we retrieve all tickets from store
+  const adminTickets = useSelector(state => state.tickets);
 
-  // useEffect(() => {
-  //   fetchTickets()
-  // }, []);
+  //we retrieve all tickets in database with an api call for admin user
+  const fetchTickets = async () => {
+    const ticketsFromDataBase = await getTicketsAPI();
+    dispatch(setTickets(ticketsFromDataBase));
+  };
 
+  // we display all tickets from db for admin user
+  useEffect(() => {
+    if (user.admin) fetchTickets()
+  }, [user]);
+
+  if (user === null) return user;
   return (
     <div className='ticket-list'>
-      {
-        userTickets?.map(ticket => {
-          return <Ticket key={ticket._id} ticket={ticket} className='single-ticket' />
-        })
+      {user.admin ? (
+        <>
+          <h2>Admin Tickets</h2>
+          {adminTickets.map((ticket) => (
+            <Ticket key={ticket._id} ticket={ticket} className='single-ticket' />
+          ))}
+        </>
+      ) :
+        (
+          <>
+            <h2>Usuer Tickets</h2>
+            {user.tickets.map((ticket) => (
+              <Ticket key={ticket._id} ticket={ticket} className='single-ticket' />
+            ))}
+          </>
+        )
       }
     </div>
   );
