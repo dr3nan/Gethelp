@@ -7,19 +7,20 @@ import { useEffect } from "react";
 import { setUserFromActiveTicket } from "../../../slices/ActiveTicketSlice";
 import { getUserByEmail } from "../../../api/apiUsers";
 
+// FEATURE: create a logout button
 const TicketListView = () => {
   const { user } = useSelector(({ user }) => user);
   const dispatch = useDispatch();
 
-  const fetchUserTickets = async () => {
-    // TODO: fetch ticket from user
-    const ticketsFromUserDB = await getUserByEmail(user.email);
-    dispatch(setUserFromActiveTicket(ticketsFromUserDB));
-  };
+  // const fetchUserTickets = async () => {
+  //   // TODO: fetch ticket from user
+  //   const ticketsFromUserDB = await getUserByEmail(user.email);
+  //   dispatch(setUserFromActiveTicket(ticketsFromUserDB));
+  // };
 
-  useEffect(() => {
-    fetchUserTickets()
-  }, []);
+  // useEffect(() => {
+  //   fetchUserTickets()
+  // }, []);
   // const dispatch = useDispatch();
 
   // const todos = useSelector(state => state.todos);

@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { addTodo, resetForm } from '../../../slices/TodoSlice'
 import { addToDo as addTodoAPI } from '../../../api/apiTodos';
 
-
 function CreateToDo() {
   const dispatch = useDispatch();
 

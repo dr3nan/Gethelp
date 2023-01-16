@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
-import { editTicket as updateTicketAPI, deleteTicket as deleteTicketAPI, getTicket as getTicketFromAPI, deleteTicketFromUser as deleteTicketUserAPI } from '../../../api/apiTickets';
+import { editTicket as updateTicketAPI, deleteTicket as deleteTicketDbAPI, getTicket as getTicketFromAPI, deleteTicketWithinUser as deleteTicketUserAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
 import { activeTicket } from '../../../slices/ActiveTicketSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Ticket = ({ ticket }) => {
   const { user } = useSelector(({ user }) => user);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);
   const [title, setTitle] = useState(ticket.title);
@@ -29,11 +29,11 @@ const Ticket = ({ ticket }) => {
 
   const handleDelete = async (user, ticket) => {
     try {
-      await deleteTicketUserAPI(user._id, ticket._id);
-      await deleteTicketAPI(ticket._id);
+      deleteTicketUserAPI(user._id, ticket._id);
+      await deleteTicketDbAPI(ticket._id);
       dispatch(deleteTicket(ticket));
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
   };
 
@@ -41,13 +41,13 @@ const Ticket = ({ ticket }) => {
     try {
       const ticketFromAPI = await getTicketFromAPI(ticket._id);
       dispatch(activeTicket(ticketFromAPI));
-      navigate('/ticket/' + ticket._id)
+      navigate('/ticket/' + ticket._id + user._id)
     } catch (err) {
       console.error(err);
     }
   };
   // FEATURE: add a function to get the number of messages to display
-  // console.log('messages', ticket.messages.length());
+  // FEATURE: make status editable only to admin
   return (
     <div className='solo-ticket'>
       <div className='ticket-fields'>

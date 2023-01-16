@@ -35,9 +35,9 @@ export const addTicket = async (addedTicket) => {
 };
 
 // TO FIX
-export const createTicketInUser = async (id, ticketToAdd) => {
+export const createTicketInUser = async (userId, ticketToAdd) => {
   try {
-    const response = await fetch(`${BASE_URL}/user/${id}/tickets/${ticketToAdd}`, {
+    const response = await fetch(`${BASE_URL}/user/${userId}/tickets/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -61,9 +61,9 @@ export const deleteTicket = async (id) => {
   }
 };
 
-export const deleteTicketFromUser = async (userId, ticketId) => {
+export const deleteTicketWithinUser = async (userId, ticketId) => {
   try {
-    const response = await fetch(`${BASE_URL}/user/${userId}/tickets/${ticketId}`, {
+    const response = await fetch(`${BASE_URL}/user/${userId}/tickets/ticket/${ticketId}`, {
       method: 'DELETE'
     });
     return await response.json();

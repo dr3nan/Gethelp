@@ -4,11 +4,11 @@ import { getTickets as getTicketsAPI } from '../../../api/apiTickets';
 import { setTickets } from '../../../slices/TicketSlice';
 import Ticket from '../ticket/Ticket';
 
-const TicketList = () => {
+const TicketsList = () => {
   const dispatch = useDispatch();
-
   // we retrieve current user tickets from store
   const { user } = useSelector(({ user }) => user);
+  console.log('user', user);
 
   // we retrieve all tickets from store
   const adminTickets = useSelector(state => state.tickets);
@@ -39,7 +39,7 @@ const TicketList = () => {
         (
           <>
             <h2>Usuer Tickets</h2>
-            {user.tickets.map((ticket) => (
+            {user.tickets?.map((ticket) => (
               <Ticket key={ticket._id} ticket={ticket} />
             ))}
           </>
@@ -49,4 +49,4 @@ const TicketList = () => {
   );
 };
 
-export default TicketList;
+export default TicketsList;

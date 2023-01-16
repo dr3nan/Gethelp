@@ -38,6 +38,7 @@ export const createTicketInUser = async (req, res) => {
   try {
     const { title, status, date, user } = req.body;
     const newTicket = new Tickets({ title, status, date, user });
+    console.log('new ticket', newTicket);
     await newTicket.save();
     await Users.findOneAndUpdate(
       { _id: req.params.id },
