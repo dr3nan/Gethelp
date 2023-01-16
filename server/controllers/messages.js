@@ -1,5 +1,6 @@
 import Tickets from '../models/tickets.js';
 import Users from '../models/users.js';
+import * as mongoose from 'mongoose';
 
 export const getMessages = async (req, res) => {
   try {
@@ -32,20 +33,21 @@ export const createMessage = async (req, res) => {
 
 export const createMessageInUserTicket = async (req, res) => {
   try {
-    // to update DB
-    const newMessage = await Tickets.findOneAndUpdate(
-      { _id: req.params.ticketId },
-      { $push: { messages: { id: req.body.id, message: req.body.message, sender: req.body.sender, date: req.body.date } } },
+    console.log('health', req.params.ticketId);
+    const newMessage = { id: req.body.id, message: req.body.message, sender: req.body.sender, date: req.body.date };
+
+    const user = await Users.findOneAndUpdate(
+      { _id: req.params.userId, 'tickets._id': new mongoose.Types.ObjectId(req.params.ticketId) },
+      { $push: { 'tickets.$.messages': newMessage } },
       { new: true }
     );
-    
-    await Users.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $addToSet: { tickets: newMessage._id } },
+    await Tickets.findOneAndUpdate(
+      { _id: req.params.ticketId },
+      { $push: { messages: newMessage } },
       { new: true }
     );
     res.status(201);
-    res.send();
+    res.send(user);
   } catch (err) {
     console.error(err);
     res.status(500);
@@ -56,7 +58,8 @@ export const editMessage = async (req, res) => {
   try {
     const updMessageInTicket = await Tickets.findOneAndUpdate(
       { _id: req.params.id, 'messages._id': req.params.messageId },
-      { $set: { 'messages.$.message': req.body.message } }
+      { $set: { 'messages.$.message': req.body.message } },
+      { new: true }
     );
     res.status(201);
     res.send(updMessageInTicket);

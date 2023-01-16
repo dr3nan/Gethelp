@@ -25,7 +25,8 @@ export const addMessage = async (ticketId, messageToAdd) => {
   }
 };
 
-export const addMessageToTicketInUser = async (userId, ticketId, messageToAdd) => {
+export const createMessageInTicketInUser = async (userId, ticketId, messageToAdd) => {
+  console.log('methods in api call:', userId, ticketId, messageToAdd);
   try {
     const response = await fetch(`${BASE_URL}/user/${userId}/tickets/${ticketId}/messages`, {
       method: 'POST',

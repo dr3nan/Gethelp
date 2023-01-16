@@ -5,7 +5,21 @@ const usersSchema = new mongoose.Schema({
   admin: Boolean,
   password: String,
   email: String,
-  tickets: []
+  tickets: [
+    {
+      title: String,
+      status: String,
+      date: String,
+      user: String,
+      messages: [
+        {
+          message: String,
+          sender: String,
+          date: String,
+        }
+      ],
+    }
+  ]
 });
 
 const Users = mongoose.model('Users', usersSchema);
