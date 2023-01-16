@@ -1,10 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addTicket as addTicketAPI, createTicketInUser as createTicketInUserAPI } from '../../../api/apiTickets';
+import { getUser as getUserFromAPI} from '../../../api/apiUsers';
 import { addTicket } from '../../../slices/TicketSlice';
-import { addTicket as addTicketAPI } from '../../../api/apiTickets';
-import { createTicketInUser } from '../../../api/apiTickets';
 import { isUserLogged } from '../../../slices/UserSlice';
-import { getUser } from '../../../api/apiUsers';
 
 const CreateTicket = () => {
   const dispatch = useDispatch();
@@ -27,14 +26,17 @@ const CreateTicket = () => {
       ]
     }
     try {
-      // TODO: api call needs to add ticket to db,
-      // add ticket to user, fetch user with new tickets and update user state
-      // create ticket in API
-      await addTicketAPI(ticket);
-      console.log('ticket', ticket);
-      // create ticket in user file/tickets
-      await createTicketInUser(user._id, ticket);
-      const userWithNewTicketAPI = await getUser(user._id);
+      // TODO: api call needs to add ticket to db, // DONE
+      // add ticket to user, fetch user with new tickets and update user state // DONE
+
+      // create ticket in DB API
+      const ticketAddedAPI = await addTicketAPI(ticket);
+      // create ticket in user tickets array db
+      await createTicketInUserAPI(user._id, ticket);
+      // fetch user with new tickets to update state later
+      const userWithNewTicketAPI = await getUserFromAPI(user._id);
+      // update ticket state with new ticket
+      dispatch(addTicket(ticketAddedAPI));
       // update user state with new ticket
       dispatch(isUserLogged(userWithNewTicketAPI));
     } catch (err) {

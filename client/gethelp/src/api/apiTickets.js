@@ -38,7 +38,7 @@ export const addTicket = async (addedTicket) => {
 export const createTicketInUser = async (userId, ticketToAdd) => {
   try {
     console.log('createticketinuser', userId, ticketToAdd);
-    const response = await fetch(`${BASE_URL}/user/${userId}/tickets/`, {
+    const response = await fetch(`${BASE_URL}/user/${userId}/tickets`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
