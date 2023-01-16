@@ -25,9 +25,8 @@ export const addMessage = async (ticketId, messageToAdd) => {
   }
 };
 
-export const addMessageToTicketInUSer = async (userId, ticketId, messageToAdd) => {
+export const addMessageToTicketInUser = async (userId, ticketId, messageToAdd) => {
   try {
-    console.log('userId', userId);
     const response = await fetch(`${BASE_URL}/user/${userId}/tickets/${ticketId}/messages`, {
       method: 'POST',
       headers: {

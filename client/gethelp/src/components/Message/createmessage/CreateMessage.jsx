@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { resetMessage } from '../../../slices/MessageSlice';
-import { addMessage as addMessageToTicketAPI, addMessageToTicketInUSer } from '../../../api/apiMessages';
+import { addMessage as addMessageToTicketAPI, addMessageToTicketInUser as messageToTicketInUserAPI} from '../../../api/apiMessages';
 import { getUser as getUserFromAPI } from '../../../api/apiUsers';
 import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
 import { isUserLogged } from '../../../slices/UserSlice';
@@ -28,25 +27,21 @@ const CreateMessage = () => {
       // call to update message in ticket DB
       const ticket = await addMessageToTicketAPI(activeTicket._id, message);
       // call to update message in user ticket array
-      await addMessageToTicketInUSer(user._id, activeTicket._id, message);
+      await messageToTicketInUserAPI(user._id, activeTicket._id, message);
       // get updated user from db
       const userWithNewMessage = await getUserFromAPI(user._id);
       // update the activeTicket state
       dispatch(setActiveTicket(ticket));
       // update the user state
       dispatch(isUserLogged(userWithNewMessage));
-      console.log('message added to ticket');
       console.log('user after message insertion', user);
+      console.log('message added to ticket');
     } catch (err) {
       console.error(err);
     }
     // to reset input once submit
     event.target.reset();
   };
-
-  // const handleReset = () => {
-  //   dispatch(resetMessage);
-  // };
 
   return (
     <div className='create-message'>

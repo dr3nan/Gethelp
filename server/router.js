@@ -15,7 +15,7 @@ router.delete('/user/:id/tickets/:ticketId', deleteTicketFromUser);
 router.put('/ticket/:id', updateTicket);
 
 router.post('/ticket/:id/messages/message', createMessage);
-router.post('/user/:id/tickets/:ticketId/messages', createMessageInUserTicket);
+router.post('/user/:userId/tickets/:ticketId/messages', createMessageInUserTicket);
 router.put('/ticket/:id/messages/:messageId', editMessage);
 router.get('/ticket/:id/messages', getMessages);
 
