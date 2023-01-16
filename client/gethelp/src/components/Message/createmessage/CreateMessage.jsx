@@ -18,7 +18,7 @@ const CreateMessage = () => {
     const formData = new FormData(event.target);
     const message = {
       message: formData.get('message'),
-      sender: activeTicket.sender,
+      sender: activeTicket.user,
       date: new Date().toISOString().slice(0, 16)
     }
     try {
