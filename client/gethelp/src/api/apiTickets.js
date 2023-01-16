@@ -9,10 +9,9 @@ export const getTickets = async () => {
   }
 };
 
-export const getTicket = async (id) => {
+export const getTicket = async (ticketId) => {
   try {
-    const response = await fetch(`${BASE_URL}/ticket/${id}`);
-    console.log('response', response);
+    const response = await fetch(`${BASE_URL}/ticket/${ticketId}`);
     return await response.json()
   } catch (err) {
     console.error(err)
@@ -37,7 +36,6 @@ export const addTicket = async (addedTicket) => {
 // TO FIX
 export const createTicketInUser = async (userId, ticketToAdd) => {
   try {
-    console.log('createticketinuser', userId, ticketToAdd);
     const response = await fetch(`${BASE_URL}/user/${userId}/tickets`, {
       method: 'POST',
       headers: {
@@ -51,9 +49,9 @@ export const createTicketInUser = async (userId, ticketToAdd) => {
   }
 };
 
-export const deleteTicket = async (id) => {
+export const deleteTicket = async (ticketId) => {
   try {
-    const response = await fetch(`${BASE_URL}/ticket/${id}`, {
+    const response = await fetch(`${BASE_URL}/ticket/${ticketId}`, {
       method: 'DELETE'
     });
     return await response.json();
@@ -64,8 +62,23 @@ export const deleteTicket = async (id) => {
 
 export const deleteTicketWithinUser = async (userId, ticketId) => {
   try {
-    const response = await fetch(`${BASE_URL}/user/${userId}/tickets/ticket/${ticketId}`, {
+    const response = await fetch(`${BASE_URL}/user/${userId}/tickets/${ticketId}`, {
       method: 'DELETE'
+    });
+    return await response.text();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const editTicket = async (ticketId, updatedData) => {
+  try {
+    const response = await fetch(`${BASE_URL}/ticket/${ticketId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedData)
     });
     return await response.json();
   } catch (err) {
@@ -73,9 +86,9 @@ export const deleteTicketWithinUser = async (userId, ticketId) => {
   }
 };
 
-export const editTicket = async (id, updatedData) => {
+export const editTicketInUser = async (userId, ticketId, updatedData) => {
   try {
-    const response = await fetch(`${BASE_URL}/ticket/${id}`, {
+    const response = await fetch(`${BASE_URL}/user/${userId}/tickets/${ticketId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

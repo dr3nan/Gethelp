@@ -11,7 +11,7 @@ router.get('/ticket/:id', getTicket);
 router.post('/newTicket', createTicket);
 router.post('/user/:id/tickets', createTicketInUser);
 router.delete('/ticket/:id', deleteTicket);
-router.delete('/user/:id/tickets/ticket/:ticketId', deleteTicketFromUser);
+router.delete('/user/:id/tickets/:ticketId', deleteTicketFromUser);
 router.put('/ticket/:id', updateTicket);
 
 router.post('/ticket/:id/messages/message', createMessage);

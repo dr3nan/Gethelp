@@ -6,6 +6,7 @@ import { getDateFromDateString } from '../../../helpers/dateTools'
 import { activeTicket } from '../../../slices/ActiveTicketSlice';
 import { useNavigate } from 'react-router-dom';
 import { isUserLogged } from '../../../slices/UserSlice';
+import { getUser } from '../../../api/apiUsers';
 
 const Ticket = ({ ticket }) => {
   const { user } = useSelector(({ user }) => user);
@@ -20,7 +21,9 @@ const Ticket = ({ ticket }) => {
     if (isEditable) {
       try {
         const updatedTicket = { title, status };
+        // update the ticket to DB
         await updateTicketAPI(ticket._id, updatedTicket);
+        
         dispatch(editTicket(updatedTicket));
       } catch (err) {
         console.error(err);
@@ -35,12 +38,15 @@ const Ticket = ({ ticket }) => {
 
   const handleDelete = async (user, ticket) => {
     try {
+      console.log('user id', user._id);
+      console.log('ticket id', ticket._id);
+
       // delete ticket from DB
       await deleteTicketFromDbAPI(ticket._id);
       // delete ticket from user
       await deleteTicketFromUserAPI(user._id, ticket._id);
       // get user with new tickets from DB
-      const getUserFromAPI = (user._id);
+      const getUserFromAPI = await getUser(user._id);
       // update ticket state
       dispatch(deleteTicket(ticket._id));
       // update user state with fetched user

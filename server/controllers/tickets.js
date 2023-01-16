@@ -1,6 +1,6 @@
 import Tickets from '../models/tickets.js';
 import Users from '../models/users.js';
-
+import * as mongoose from 'mongoose'
 export const getTickets = async (req, res) => {
   try {
     const get = await Tickets.find();
@@ -88,10 +88,12 @@ export const deleteTicket = async (req, res) => {
 
 export const deleteTicketFromUser = async (req, res) => {
   try {
-    const ticketToDelete = await Tickets.findOneAndDelete({ _id: req.params.id });
+    // delete tickets from DB
+    const ticketToDelete = await Tickets.findOneAndDelete({ _id: req.params.ticketId });
+    // here we search for an user ID and pull (delete) from the tickets array with ticket ID
     await Users.findOneAndUpdate(
-      { tickets: req.params.id },
-      { $pull: { tickets: req.params.id } },
+      { _id: req.params.id },
+      { $pull: { tickets: { _id: new mongoose.Types.ObjectId(req.params.ticketId) } } },
       { new: true }
     );
     res.status(200);
