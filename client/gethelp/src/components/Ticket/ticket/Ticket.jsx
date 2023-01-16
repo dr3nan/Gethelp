@@ -23,7 +23,7 @@ const Ticket = ({ ticket }) => {
         const updatedTicket = { title, status };
         // update the ticket to DB
         await updateTicketAPI(ticket._id, updatedTicket);
-        
+        // TODO
         dispatch(editTicket(updatedTicket));
       } catch (err) {
         console.error(err);
@@ -38,9 +38,6 @@ const Ticket = ({ ticket }) => {
 
   const handleDelete = async (user, ticket) => {
     try {
-      console.log('user id', user._id);
-      console.log('ticket id', ticket._id);
-
       // delete ticket from DB
       await deleteTicketFromDbAPI(ticket._id);
       // delete ticket from user
@@ -58,9 +55,12 @@ const Ticket = ({ ticket }) => {
 
   const handleShowMessages = async (ticket) => {
     try {
+      // fetch current ticket from API
       const ticketFromAPI = await getTicketFromAPI(ticket._id);
+      // send ticket to ActiveTicket state so we can use in component
       dispatch(activeTicket(ticketFromAPI));
-      navigate('/ticket/' + ticket._id + user._id)
+      // once the ticket has been sent to state, navigate to next link
+      navigate('/ticket/' + ticket._id);
     } catch (err) {
       console.error(err);
     }

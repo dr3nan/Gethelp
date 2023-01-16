@@ -1,6 +1,6 @@
 import Tickets from '../models/tickets.js';
 import Users from '../models/users.js';
-import * as mongoose from 'mongoose'
+import * as mongoose from 'mongoose';
 export const getTickets = async (req, res) => {
   try {
     const get = await Tickets.find();
@@ -37,10 +37,10 @@ export const createTicket = async (req, res) => {
 export const createTicketInUser = async (req, res) => {
   try {
     const { title, status, date, user, messages } = req.body;
-    console.log('whole body', req.body);
-    console.log('message', messages);
+    // console.log('whole body', req.body);
+    // console.log('message', messages);
     const newTicket = new Tickets({ title, status, date, user, messages });
-    console.log('new ticket', newTicket);
+    // console.log('new ticket', newTicket);
     await newTicket.save();
     await Users.findOneAndUpdate(
       { _id: req.params.id },
@@ -66,6 +66,30 @@ export const updateTicket = async (req, res) => {
     if (req.body.status) {
       upd.status = req.body.status;
     };
+    await upd.save();
+    res.status(201);
+    res.send(upd);
+  } catch (err) {
+    console.error(err);
+    res.status(404);
+  }
+};
+
+export const updateTicketInUser = async (req, res) => {
+  try {
+    const upd = await Tickets.findOne({ _id: req.params.id });
+
+    if (req.body.title) {
+      upd.title = req.body.title;
+    };
+
+    if (req.body.status) {
+      upd.status = req.body.status;
+    };
+    const { title, status } = req.body;
+    const newDetails = new Tickets({ title, status });
+
+    await Users.findOneAndUpdate({})
     await upd.save();
     res.status(201);
     res.send(upd);

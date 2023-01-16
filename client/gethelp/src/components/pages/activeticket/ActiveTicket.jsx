@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CreateMessage from '../../Message/createmessage/CreateMessage';
 import { getTicket as getTicketFromAPI } from '../../../api/apiTickets';
-// import { editMessage as updateMessageFromAPI } from '../../../api/apiMessages';
 import { useNavigate, useParams } from 'react-router-dom';
 import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
-// import { editMessageInTicket as editMessage } from '../../../slices/ActiveTicketSlice';
 
 // TODO: initially added message argument
 const ActiveTicket = () => {

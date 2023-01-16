@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetMessage } from '../../../slices/MessageSlice';
+// import { resetMessage } from '../../../slices/MessageSlice';
 import { addMessage as addMessageAPI } from '../../../api/apiMessages';
 import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
 
@@ -11,22 +11,18 @@ const CreateMessage = () => {
   const activeTicket = useSelector((state) => state.activeTicket);
   console.log('active ticket', activeTicket);
 
+  const { user } = useSelector(({ user }) => user)
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // we set what we are going to get from the form to be sent later
     const formData = new FormData(event.target);
-    // we receive the message from the message input
-    // the sender should be populated with the name of whoever sends the message
     const message = {
       message: formData.get('message'),
       sender: activeTicket.sender,
       date: new Date().toISOString().slice(0, 16)
     }
     try {
-      // we receive the current ticket thanks to the call from state which includes the whole current ticket made above
-      // with its id. and we pass it to the api that creates messages, we also add the inputs from the form
       const ticket = await addMessageAPI(activeTicket._id, message);
-      // dispatch sends to the activeTicket action the ticket var that has all the info we need and updates the ticket
       dispatch(setActiveTicket(ticket));
       console.log('message added to ticket');
     } catch (err) {
@@ -35,9 +31,9 @@ const CreateMessage = () => {
     event.target.reset();
   };
 
-  const handleReset = () => {
-    dispatch(resetMessage);
-  };
+  // const handleReset = () => {
+  //   dispatch(resetMessage);
+  // };
 
   return (
     <div className='create-message'>
@@ -52,7 +48,7 @@ const CreateMessage = () => {
         </div>
         <div className='create-buttons'>
           <button type='submit'>Send</button>
-          <button type='reset' onClick={handleReset}>Reset</button>
+          {/* <button type='reset' onClick={handleReset}>Reset</button> */}
         </div>
       </form>
     </div>
