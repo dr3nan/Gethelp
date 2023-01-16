@@ -1,4 +1,5 @@
 import Tickets from '../models/tickets.js';
+import Users from '../models/users.js';
 
 export const getMessages = async (req, res) => {
   try {
@@ -23,6 +24,28 @@ export const createMessage = async (req, res) => {
     );
     res.status(201);
     res.send(postMessageInTicket);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+};
+
+export const createMessageInUserTicket = async (req, res) => {
+  try {
+    // to update DB
+    const newMessage = await Tickets.findOneAndUpdate(
+      { _id: req.params.ticketId },
+      { $push: { messages: { id: req.body.id, message: req.body.message, sender: req.body.sender, date: req.body.date } } },
+      { new: true }
+    );
+    
+    await Users.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $addToSet: { tickets: newMessage._id } },
+      { new: true }
+    );
+    res.status(201);
+    res.send();
   } catch (err) {
     console.error(err);
     res.status(500);

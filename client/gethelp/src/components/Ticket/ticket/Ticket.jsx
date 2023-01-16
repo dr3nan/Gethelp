@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
-import { editTicket as updateTicketAPI, deleteTicket as deleteTicketFromDbAPI, getTicket as getTicketFromAPI, deleteTicketWithinUser as deleteTicketFromUserAPI } from '../../../api/apiTickets';
+import { editTicket as updateTicketAPI, getTicket as getTicketFromAPI, deleteTicketWithinUser as deleteTicketFromUserAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
 import { activeTicket } from '../../../slices/ActiveTicketSlice';
 import { useNavigate } from 'react-router-dom';
@@ -31,15 +31,8 @@ const Ticket = ({ ticket }) => {
     }
   };
 
-  // handleDlete should delete ticket from user and db
-  // should fetch from DB and from user
-  // should update state for tickets (deleteTicket)
-  // fetch user and update user state (isLogged)
-
   const handleDelete = async (user, ticket) => {
     try {
-      // delete ticket from DB
-      await deleteTicketFromDbAPI(ticket._id);
       // delete ticket from user
       await deleteTicketFromUserAPI(user._id, ticket._id);
       // get user with new tickets from DB
@@ -60,7 +53,7 @@ const Ticket = ({ ticket }) => {
       // send ticket to ActiveTicket state so we can use in component
       dispatch(activeTicket(ticketFromAPI));
       // once the ticket has been sent to state, navigate to next link
-      navigate('/ticket/' + ticket._id);
+      navigate('/ticket/' + ticket._id + user._id);
     } catch (err) {
       console.error(err);
     }

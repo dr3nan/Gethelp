@@ -1,5 +1,5 @@
 import express from 'express';
-import { createMessage, editMessage, getMessages } from './controllers/messages.js';
+import { createMessage, createMessageInUserTicket, editMessage, getMessages } from './controllers/messages.js';
 import { createTicket, createTicketInUser, deleteTicket, deleteTicketFromUser, getTicket, getTickets, updateTicket } from './controllers/tickets.js';
 import { createTodo, deleteTodo, getTodos, updateTodo } from './controllers/todos.js';
 import { createUser, deleteUser, getAllUsers, getUser, getUserByMail } from './controllers/users.js';
@@ -15,7 +15,7 @@ router.delete('/user/:id/tickets/:ticketId', deleteTicketFromUser);
 router.put('/ticket/:id', updateTicket);
 
 router.post('/ticket/:id/messages/message', createMessage);
-// router.post('/ticket/:id/messages/message', createMessageInUser);
+router.post('/user/:id/tickets/:ticketId/messages', createMessageInUserTicket);
 router.put('/ticket/:id/messages/:messageId', editMessage);
 router.get('/ticket/:id/messages', getMessages);
 

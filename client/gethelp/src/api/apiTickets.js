@@ -9,9 +9,9 @@ export const getTickets = async () => {
   }
 };
 
-export const getTicket = async (ticketId) => {
+export const getTicket = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}/ticket/${ticketId}`);
+    const response = await fetch(`${BASE_URL}/ticket/${id}`);
     return await response.json()
   } catch (err) {
     console.error(err)
@@ -49,9 +49,9 @@ export const createTicketInUser = async (userId, ticketToAdd) => {
   }
 };
 
-export const deleteTicket = async (ticketId) => {
+export const deleteTicket = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}/ticket/${ticketId}`, {
+    const response = await fetch(`${BASE_URL}/ticket/${id}`, {
       method: 'DELETE'
     });
     return await response.json();

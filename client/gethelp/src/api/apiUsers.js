@@ -1,8 +1,8 @@
 import { BASE_URL } from './constants';
 
-export const getUser = async (id) => {
+export const getUser = async (userId) => {
   try {
-    const response = await fetch(`${BASE_URL}/user/${id}`);
+    const response = await fetch(`${BASE_URL}/user/${userId}`);
     return await response.json()
   } catch (err) {
     console.error(err)
