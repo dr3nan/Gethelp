@@ -2,7 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // TODO: define as object
 const initialState = {
-  // object for activeTicket, object for activeUser
+  title: '',
+  status: '',
+  user: '',
+  date: '',
+  messages: [],
 };
 
 const activeTicketSlice = createSlice({
@@ -13,12 +17,13 @@ const activeTicketSlice = createSlice({
       return action.payload;
     },
 
-    setUserFromActiveTicket: (state, action) => {
+    userFromActiveTicket: (state, action) => {
       return action.payload;
     },
 
     addMessageToTicket: (state, action) => {
       state.messages.push(action.payload);
+      return state;
     },
 
     editMessageInTicket: (state, action) => {
@@ -28,6 +33,6 @@ const activeTicketSlice = createSlice({
   }
 });
 
-export const { activeTicket, addMessageToTicket, editMessageInTicket, setUserFromActiveTicket } = activeTicketSlice.actions;
+export const { activeTicket, addMessageToTicket, editMessageInTicket, userFromActiveTicket } = activeTicketSlice.actions;
 
 export default activeTicketSlice.reducer;

@@ -18,6 +18,15 @@ export const getTicket = async (id) => {
   }
 };
 
+// export const getTicketFromUser = async (req, res) => {
+//   try {
+//     const response = await fetch(`${BASE_URL}/${userId}/tickets/${ticketId}`);
+//     return await response.json()
+//   } catch (err) {
+
+//   }
+// }
+
 export const addTicket = async (addedTicket) => {
   try {
     const response = await fetch(`${BASE_URL}/newTicket`, {

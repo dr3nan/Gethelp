@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { addMessage as addMessageToTicketAPI, createMessageInTicketInUser as messageToTicketInUserAPI} from '../../../api/apiMessages';
 import { createMessageInTicketInUser as messageToTicketInUserAPI} from '../../../api/apiMessages';
 import { getUser as getUserFromAPI } from '../../../api/apiUsers';
-import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
+import { activeTicket as setActiveTicket, addMessageToTicket as addMessageToActiveTicket, userFromActiveTicket as setUserFromActiveTicket } from '../../../slices/ActiveTicketSlice'
 import { isUserLogged } from '../../../slices/UserSlice';
 
 const CreateMessage = () => {
   const dispatch = useDispatch();
+  // user state called to be able to pass user id to new message
   const { user } = useSelector(({ user }) => user);
   // we are receiving the active ticket from the reducer activeTicket (state), in the ActiveTicketSlice
   // we will receive the whole ticket by being in the ticket itself
   const activeTicket = useSelector((state) => state.activeTicket);
 
-  console.log(activeTicket);
+  console.log('user id', activeTicket._id);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,18 +25,16 @@ const CreateMessage = () => {
       date: new Date().toISOString().slice(0, 16)
     }
     try {
-
-      // call to update message in user ticket array
-      const messageToTicketInUserAPI = await (user._id, activeTicket._id, message);
+      // call to update message in user ticket array inuser db
+      await messageToTicketInUserAPI(user._id, activeTicket._id, message);
       // get updated user from db
+      dispatch(addMessageToActiveTicket(message));
       const userWithNewMessage = await getUserFromAPI(user._id);
+      console.log('user with new message', userWithNewMessage);
       // update the activeTicket state
 
-      dispatch(setActiveTicket(messageToTicket));
       // update the user state
       dispatch(isUserLogged(userWithNewMessage));
-      console.log('user after message insertion', user);
-      console.log('message added to ticket');
     } catch (err) {
       console.error(err);
     }

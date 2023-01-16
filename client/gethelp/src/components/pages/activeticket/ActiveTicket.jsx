@@ -8,8 +8,10 @@ import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSli
 // TODO: initially added message argument
 const ActiveTicket = () => {
   const { id } = useParams();
+  console.log('id only', id);
   const dispatch = useDispatch();
   const activeTicket = useSelector(state => state.activeTicket);
+  console.log('active ticket', activeTicket._id);
   const navigate = useNavigate();
   // TODO: part of the handleEdit
   // const [isEditable, setIsEditable] = useState(false);

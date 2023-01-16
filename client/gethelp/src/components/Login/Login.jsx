@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUserByEmail as getUserFromAPI } from '../../api/apiUsers';
-// import { setUserFromActiveTicket } from '../../slices/ActiveTicketSlice';
 import { isUserLogged } from '../../slices/UserSlice';
 
 const Login = () => {
@@ -18,15 +17,22 @@ const Login = () => {
     }
     try {
       const getUser = await getUserFromAPI(user.email);
-      // console.log('user from api', getUser);
       dispatch(isUserLogged(getUser));
-      // dispatch(setUserFromActiveTicket(getUser.nickname, getUser.admin))
-      if (!getUser) navigate('/login');
-      else navigate('/ticket-list');
+      localStorage.setItem('user', JSON.stringify({ id: user._id, admin: user.admin }));
+      // if (!getUser) navigate('/login');
+      // else navigate('/ticket-list');
     } catch (err) {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      dispatch(isUserLogged(user));
+      navigate('/ticket-list');
+    }
+  }, [dispatch, navigate]);
 
   return (
     <form className='user-login' onSubmit={event => handleSubmit(event, dispatch)}>
