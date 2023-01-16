@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { resetMessage } from '../../../slices/MessageSlice';
-import { addMessage as addMessageAPI } from '../../../api/apiMessages';
+import { addMessage as addMessageToTicketAPI } from '../../../api/apiMessages';
 import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
 
 const CreateMessage = () => {
@@ -22,7 +22,7 @@ const CreateMessage = () => {
       date: new Date().toISOString().slice(0, 16)
     }
     try {
-      const ticket = await addMessageAPI(activeTicket._id, message);
+      const ticket = await addMessageToTicketAPI(activeTicket._id, message);
       dispatch(setActiveTicket(ticket));
       console.log('message added to ticket');
     } catch (err) {
