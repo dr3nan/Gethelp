@@ -2,8 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // TODO: Change to object
 const initialState = {
   user: null,
-  tickets: [],
-  messages: []
+  // tickets: []
 };
 
 const userLoggedSlice = createSlice({

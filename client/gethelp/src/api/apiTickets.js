@@ -37,6 +37,7 @@ export const addTicket = async (addedTicket) => {
 // TO FIX
 export const createTicketInUser = async (userId, ticketToAdd) => {
   try {
+    console.log('createticketinuser', userId, ticketToAdd);
     const response = await fetch(`${BASE_URL}/user/${userId}/tickets/`, {
       method: 'POST',
       headers: {

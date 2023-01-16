@@ -36,8 +36,10 @@ export const createTicket = async (req, res) => {
 
 export const createTicketInUser = async (req, res) => {
   try {
-    const { title, status, date, user } = req.body;
-    const newTicket = new Tickets({ title, status, date, user });
+    const { title, status, date, user, messages } = req.body;
+    console.log('whole body', req.body);
+    console.log('message', messages);
+    const newTicket = new Tickets({ title, status, date, user, messages });
     console.log('new ticket', newTicket);
     await newTicket.save();
     await Users.findOneAndUpdate(
