@@ -6,6 +6,7 @@ import { getUser as getUserFromAPI } from '../../../api/apiUsers';
 import { setTickets } from '../../../slices/TicketSlice';
 import { isUserLogged } from '../../../slices/UserSlice';
 import Ticket from '../ticket/Ticket';
+import './TicketsList.css';
 
 const TicketsList = () => {
   const dispatch = useDispatch();

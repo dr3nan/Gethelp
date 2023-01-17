@@ -4,6 +4,7 @@ import { createTicketInUser as createTicketInUserAPI } from '../../../api/apiTic
 import { getUser as getUserFromAPI } from '../../../api/apiUsers';
 import { addTicket } from '../../../slices/TicketSlice';
 import { isUserLogged } from '../../../slices/UserSlice';
+import './CreateTicket.css';
 
 const CreateTicket = () => {
   const dispatch = useDispatch();

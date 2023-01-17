@@ -5,6 +5,7 @@ import { getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { useNavigate, useParams } from 'react-router-dom';
 import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
 import './ActiveTicket.css';
+import '../../Message/createmessage/CreateMessage.css'
 
 // TODO: initially added message argument
 const ActiveTicket = () => {
@@ -47,32 +48,35 @@ const ActiveTicket = () => {
   // }, []);
 
   return (
-    <>
-      <button onClick={() => navigate(-1)}>Back</button>
-      <div className='messages-list'>
-        {activeTicket && (
-          <>
-            <div className='initial-message'>
-              {/* <p>{activeTicket.status}</p> */}
-              <p>{activeTicket.title}</p>
-              <p>{activeTicket.date}</p>
-            </div>
-            {activeTicket.messages?.map((message, index) => (
-              <div key={index} className='new-messages'>
-                {/* <input */}
-                <h4>{message.message}</h4>
-                <h4>{message.sender}</h4>
-                <h4>{message.date}</h4>
-                {/* <button onClick={() => handleEdit(message._id)}>Edit</button> */}
+    <div className='active-ticket-component'>
+      <button className='back-button-active' onClick={() => navigate(-1)}>Back</button>
+      <div className='active-ticket-wrapper'>
+        <div className='messages-list'>
+          {activeTicket && (
+            <>
+              <div className='initial-message'>
+                {/* <p>{activeTicket.status}</p> */}
+                <p>{activeTicket.user}</p>
+                <p>{activeTicket.title}</p>
+                <p>{activeTicket.date}</p>
               </div>
-            ))}
-            <div className='create-message-ticket'>
-              <CreateMessage ticketId={id} />
-            </div>
-          </>
-        )}
+              {activeTicket.messages?.map((message, index) => (
+                <div key={index} className='new-messages'>
+                  {/* <input */}
+                  <p className='sender'>{message.sender}</p>
+                  <p className='message'>{message.message}</p>
+                  <p className='date'>{message.date}</p>
+                  {/* <button onClick={() => handleEdit(message._id)}>Edit</button> */}
+                </div>
+              ))}
+              <div className='create-message-ticket'>
+                <CreateMessage ticketId={id} />
+              </div>
+            </>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   )
 };
 

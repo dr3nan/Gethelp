@@ -1,9 +1,5 @@
 import React from 'react';
 import './App.css';
-import './components/Ticket/createticket/CreateTicket.css';
-import './components/Ticket/ticketslist/TicketsList.css';
-import './components/Ticket/ticket/Ticket.css';
-
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import ActiveTicket from './components/pages/activeticket/ActiveTicket';
 import TicketListView from './components/pages/ticketlistview/TicketListView';

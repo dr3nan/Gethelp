@@ -7,6 +7,7 @@ import { activeTicket } from '../../../slices/ActiveTicketSlice';
 import { useNavigate } from 'react-router-dom';
 import { isUserLogged } from '../../../slices/UserSlice';
 import { getUser } from '../../../api/apiUsers';
+import './Ticket.css';
 
 const Ticket = ({ ticket }) => {
   const user = useSelector(({ user }) => user);
