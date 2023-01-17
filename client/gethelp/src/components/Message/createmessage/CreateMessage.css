@@ -1,3 +1,11 @@
 .create-message {
-  border: 1px solid green;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: white;
+  /* width: 96%; */
+  margin-bottom: 15px;
+  box-shadow: 0px 4px 14px 0px rgb(79 79 79 / 25%);
 }

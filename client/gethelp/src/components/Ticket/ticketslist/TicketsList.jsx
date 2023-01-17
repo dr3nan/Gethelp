@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { getTickets as getTicketsAPI } from '../../../api/apiTickets';
 import { getUser as getUserFromAPI } from '../../../api/apiUsers';
 import { setTickets } from '../../../slices/TicketSlice';
@@ -9,7 +9,7 @@ import Ticket from '../ticket/Ticket';
 
 const TicketsList = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // we retrieve current user from store
   const user = useSelector(({ user }) => user);
   console.log('user active', user);
@@ -57,7 +57,7 @@ const TicketsList = () => {
       ) :
         (
           <>
-            <h2>Usuer Tickets</h2>
+            <label className='ticket-list-label'>Active tickets</label>
             {user.tickets?.map((ticket) => (
               <Ticket key={ticket._id} ticket={ticket} />
             ))}

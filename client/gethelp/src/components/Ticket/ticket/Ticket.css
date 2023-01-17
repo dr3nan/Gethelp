@@ -1,7 +1,63 @@
 .solo-ticket {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
   border-radius: 15px;
   background-color: white;
-  display: flex;
   width: 96%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0px 4px 14px 0px rgb(79 79 79 / 25%);
+}
+
+.inputs>input {
+  border: none;
+  border-bottom: 1px solid rgb(138 138 138 / 40%);
+  font-size: 15px;
+  padding-left: 5px;
+  margin-right: 6px;
+}
+
+.inputs>label {
+  padding-right: 9px;
+}
+
+.date-in-ticket {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.ticket-fields {
+  display: flex;
+  border: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-and-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.user-and-buttons>label {
+  align-self: flex-end;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.ticket-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.ticket-buttons>button {
+  border: none;
+  border-radius: 5px;
+  height: 25px;
+  width: 45px;
+  background-color: rgba(135, 187, 208, 0.7);
 }

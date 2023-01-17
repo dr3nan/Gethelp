@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
 // import { Auth0Provider } from '@auth0/auth0-react';
 
 const container = document.getElementById('root');

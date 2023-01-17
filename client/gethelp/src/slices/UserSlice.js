@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 // TODO: Change to object
-console.log('user in local storage',JSON.parse(localStorage.getItem('user')))
+// console.log('user in local storage',JSON.parse(localStorage.getItem('user')))
 const initialState = {
   isLoggedIn: false
 };

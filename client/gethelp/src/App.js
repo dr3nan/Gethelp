@@ -1,12 +1,11 @@
 import React from 'react';
+import './App.css';
 import './components/Ticket/createticket/CreateTicket.css';
 import './components/Ticket/ticketslist/TicketsList.css';
 import './components/Ticket/ticket/Ticket.css';
-import ActiveTicket from './components/pages/activeticket/ActiveTicket';
-import './components/pages/activeticket/ActiveTicket.css';
-import './components/Login/Login.css';
+
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-// import { useAuth0 } from '@auth0/auth0-react';
+import ActiveTicket from './components/pages/activeticket/ActiveTicket';
 import TicketListView from './components/pages/ticketlistview/TicketListView';
 import LoginView from './components/pages/loginview/LoginView';
 
@@ -18,7 +17,7 @@ function App() {
         <Routes>
           <Route path='/login' element={
             <>
-              <h1>This is the main page, depending on who logs in, it will redirect to a different page once logged in</h1>
+              {/* <h1>This is the main page, depending on who logs in, it will redirect to a different page once logged in</h1> */}
               <LoginView />
               {/* {
               isAuthenticated
@@ -29,7 +28,8 @@ function App() {
           } />
           <Route path='/ticket-list' element={
             <>
-              <h1>This is the admin ticket page where all tickets should be visible and would have the todos</h1>
+              {/* <h1>This is the ticket page where all tickets should be visible</h1> */}
+              <button className='user-icon'>User</button>
               <TicketListView />
             </>
           }

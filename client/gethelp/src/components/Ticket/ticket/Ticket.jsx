@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { editTicket, deleteTicket } from '../../../slices/TicketSlice';
 import { editTicket as updateTicketAPI, getTicket as getTicketFromAPI, deleteTicketWithinUser as deleteTicketFromUserAPI } from '../../../api/apiTickets';
 import { getDateFromDateString } from '../../../helpers/dateTools'
@@ -9,7 +9,7 @@ import { isUserLogged } from '../../../slices/UserSlice';
 import { getUser } from '../../../api/apiUsers';
 
 const Ticket = ({ ticket }) => {
-  const { user } = useSelector(({ user }) => user);
+  const user = useSelector(({ user }) => user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isEditable, setIsEditable] = useState(false);
@@ -54,7 +54,7 @@ const Ticket = ({ ticket }) => {
       // send ticket to ActiveTicket state so we can use in component
       dispatch(activeTicket(ticketFromAPI));
       // once the ticket has been sent to state, navigate to next link
-      navigate('/ticket/' + ticket._id + user._id);
+      navigate('/ticket/' + ticket._id);
     } catch (err) {
       console.error(err);
     }
@@ -64,21 +64,23 @@ const Ticket = ({ ticket }) => {
   return (
     <div className='solo-ticket'>
       <div className='ticket-fields'>
-        <label htmlFor='status'>Status</label>
-        <input
-          type='text'
-          readOnly={!isEditable}
-          value={status}
-          onChange={e => setStatus(e.target.value)}
-        />
-        <label htmlFor='title'>Title</label>
-        <input
-          type='text'
-          readOnly={!isEditable}
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
-        <div className='EWDate-ticket'>
+        <div className='inputs'>
+          <label htmlFor='status'>Status</label>
+          <input
+            type='text'
+            readOnly={!isEditable}
+            value={status}
+            onChange={e => setStatus(e.target.value)}
+          />
+          <label htmlFor='title'>Title</label>
+          <input
+            type='text'
+            readOnly={!isEditable}
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+        </div>
+        <div className='date-in-ticket'>
           {getDateFromDateString(ticket.date).toLocaleString('default', {
             minute: 'numeric',
             hour: 'numeric',
@@ -87,12 +89,14 @@ const Ticket = ({ ticket }) => {
             year: 'numeric'
           })}
         </div>
-        <label type='text'>{ticket.user}</label>
       </div>
-      <div className='ticket-buttons'>
-        <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
-        <button onClick={() => handleDelete(user, ticket)}>X</button>
-        <button onClick={() => handleShowMessages(ticket)}>Show Messages</button>
+      <div className='user-and-buttons'>
+        <div className='ticket-buttons'>
+          <button className='message-button' onClick={() => handleShowMessages(ticket)}>View</button>
+          <button className='edit-button' onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
+          <button className='delete-button' onClick={() => handleDelete(user, ticket)}>X</button>
+        </div>
+        <label type='text'>Created by {ticket.user}</label>
       </div>
     </div>
   )

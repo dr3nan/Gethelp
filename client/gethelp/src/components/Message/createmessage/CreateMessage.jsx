@@ -5,11 +5,12 @@ import { createMessageInTicketInUser as messageToTicketInUserAPI} from '../../..
 import { getUser as getUserFromAPI } from '../../../api/apiUsers';
 import { activeTicket as setActiveTicket, addMessageToTicket as addMessageToActiveTicket, userFromActiveTicket as setUserFromActiveTicket } from '../../../slices/ActiveTicketSlice'
 import { isUserLogged } from '../../../slices/UserSlice';
+import './CreateMessage.css';
 
 const CreateMessage = () => {
   const dispatch = useDispatch();
   // user state called to be able to pass user id to new message
-  const { user } = useSelector(({ user }) => user);
+  const user = useSelector(({ user }) => user);
   // we are receiving the active ticket from the reducer activeTicket (state), in the ActiveTicketSlice
   // we will receive the whole ticket by being in the ticket itself
   const activeTicket = useSelector((state) => state.activeTicket);
@@ -26,6 +27,7 @@ const CreateMessage = () => {
     }
     try {
       // call to update message in user ticket array inuser db
+      console.log('Mira aqui ==>',user)
       await messageToTicketInUserAPI(user._id, activeTicket._id, message);
       // get updated user from db
       dispatch(addMessageToActiveTicket(message));

@@ -4,6 +4,7 @@ import CreateMessage from '../../Message/createmessage/CreateMessage';
 import { getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { useNavigate, useParams } from 'react-router-dom';
 import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
+import './ActiveTicket.css';
 
 // TODO: initially added message argument
 const ActiveTicket = () => {
@@ -52,7 +53,7 @@ const ActiveTicket = () => {
         {activeTicket && (
           <>
             <div className='initial-message'>
-              <p>{activeTicket.status}</p>
+              {/* <p>{activeTicket.status}</p> */}
               <p>{activeTicket.title}</p>
               <p>{activeTicket.date}</p>
             </div>

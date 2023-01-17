@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUserByEmail as getUserFromAPI } from '../../api/apiUsers';
 import { activeUser, isUserLogged } from '../../slices/UserSlice';
+import './Login.css';
 
 const Login = () => {
   const dispatch = useDispatch();

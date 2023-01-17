@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTicketInUser as createTicketInUserAPI } from '../../../api/apiTickets';
-import { getUser as getUserFromAPI} from '../../../api/apiUsers';
+import { getUser as getUserFromAPI } from '../../../api/apiUsers';
 import { addTicket } from '../../../slices/TicketSlice';
 import { isUserLogged } from '../../../slices/UserSlice';
 
 const CreateTicket = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector(({ user }) => user);
-  
+  const user = useSelector(({ user }) => user);
+
   const handleSubmit = async (event, dispatch) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -42,7 +42,8 @@ const CreateTicket = () => {
 
   return (
     <div className='create-ticket'>
-      <h4>Create New Ticket</h4>
+      <label className='header-new'>New Ticket</label>
+      {/* <h4>New Ticket</h4> */}
       <form onSubmit={event => handleSubmit(event, dispatch)}>
         <div className='create-fields'>
           <label htmlFor='title'>Title</label>
@@ -51,16 +52,17 @@ const CreateTicket = () => {
             name='title'
             id='title'
           />
-          <br />
           <label htmlFor='message'>Message</label>
-          <input
+          <textarea
+            contentEditable
+            className='message-area'
             type='text'
             name='message'
             id='message'
           />
         </div>
         <div className='create-buttons'>
-          <button type='submit'>Send</button>
+          <button type='submit'>+</button>
         </div>
       </form>
     </div>
