@@ -22,7 +22,7 @@ const CreateMessage = () => {
     const formData = new FormData(event.target);
     const message = {
       message: formData.get('message'),
-      sender: activeTicket.user,
+      sender: user.nickname,
       date: new Date().toISOString().slice(0, 16)
     }
     try {
@@ -43,19 +43,20 @@ const CreateMessage = () => {
     // to reset input once submit
     event.target.reset();
   };
-
+  // TODO reset
   return (
     <div className='create-message'>
       <form onSubmit={event => handleSubmit(event)}>
-        <div className='create-fields'>
-          <label htmlFor='message'>Message</label>
+        <div className='create-fields-message'>
+          <label htmlFor='message'>New message</label>
           <textarea
+            className='text-area'
             type='text'
             name='message'
             id='message'
           />
         </div>
-        <div className='create-buttons'>
+        <div className='create-buttons-message'>
           <button type='submit'>Send</button>
           {/* <button type='reset' onClick={handleReset}>Reset</button> */}
         </div>

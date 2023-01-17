@@ -7,8 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 15px;
   height: 100vh;
-
   background-color: rgb(135, 187, 208);
+  align-items: center;
 }
 
 code {

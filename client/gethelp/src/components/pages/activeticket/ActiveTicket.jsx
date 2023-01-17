@@ -5,15 +5,16 @@ import { getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { useNavigate, useParams } from 'react-router-dom';
 import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
 import './ActiveTicket.css';
-import '../../Message/createmessage/CreateMessage.css'
+import '../../Message/createmessage/CreateMessage.css';
+import { getDateFromDateString } from '../../../helpers/dateTools';
 
-// TODO: initially added message argument
 const ActiveTicket = () => {
   const { id } = useParams();
+  // const user = useSelector((user) => user);
   console.log('id only', id);
   const dispatch = useDispatch();
   const activeTicket = useSelector(state => state.activeTicket);
-  console.log('active ticket', activeTicket._id);
+  console.log('active ticket', activeTicket);
   const navigate = useNavigate();
   // TODO: part of the handleEdit
   // const [isEditable, setIsEditable] = useState(false);
@@ -55,20 +56,28 @@ const ActiveTicket = () => {
           {activeTicket && (
             <>
               <div className='initial-message'>
-                {/* <p>{activeTicket.status}</p> */}
                 <p>{activeTicket.user}</p>
                 <p>{activeTicket.title}</p>
                 <p>{activeTicket.date}</p>
               </div>
-              {activeTicket.messages?.map((message, index) => (
-                <div key={index} className='new-messages'>
-                  {/* <input */}
-                  <p className='sender'>{message.sender}</p>
-                  <p className='message'>{message.message}</p>
-                  <p className='date'>{message.date}</p>
-                  {/* <button onClick={() => handleEdit(message._id)}>Edit</button> */}
-                </div>
-              ))}
+              {activeTicket.messages?.map((message, index) => {
+                const containerClass = message.sender === activeTicket.user
+                  ? 'message-container-right' : 'message-container-left';
+                return (
+                  <div key={index} className={containerClass}>
+                    <p className='sender'>{message.sender}</p>
+                    <p className='message'>{message.message}</p>
+                    <p className='date'>{getDateFromDateString(message.date).toLocaleString('default', {
+                      minute: 'numeric',
+                      hour: 'numeric',
+                      day: 'numeric',
+                      month: 'short',
+                      year: 'numeric'
+                    })}</p>
+                    {/* <button onClick={() => handleEdit(message._id)}>Edit</button> */}
+                  </div>
+                );
+              })}
               <div className='create-message-ticket'>
                 <CreateMessage ticketId={id} />
               </div>

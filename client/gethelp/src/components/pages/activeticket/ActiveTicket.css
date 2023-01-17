@@ -1,6 +1,6 @@
 .active-ticket-component {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
   padding: 20px;
@@ -9,8 +9,8 @@
 
 .active-ticket-wrapper {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  /* justify-content: center; */
+  /* flex-direction: column; */
   width: 100%;
   background-color: rgb(221, 243, 252);
   border-radius: 15px;
@@ -22,7 +22,6 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  border: 1px solid red;
 }
 
 .initial-message>p {
@@ -33,28 +32,52 @@
 .initial-message {
   display: flex;
   flex-direction: column;
+  align-self: flex-end;
+  width: 88%;
   padding: 15px;
   border-radius: 15px;
   background-color: white;
   margin-bottom: 15px;
   box-shadow: 0px 4px 14px 0px rgb(79 79 79 / 25%);
-  /* margin: 0px; */
-  /* padding: 0px; */
-  /* border: 1px solid green; */
 }
 
-.new-messages {
+.message-container-right {
+  float: right !important;
   display: flex;
+  align-self: flex-end;
   flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
   padding: 15px;
   width: 88%;
-  border-radius: 15px;
-  background-color: white;
   margin-bottom: 15px;
   box-shadow: 0px 4px 14px 0px rgb(79 79 79 / 25%);
 }
 
-.new-messages>p {
+.message-container-left {
+  float: right !important;
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  padding: 15px;
+  width: 88%;
+  margin-bottom: 15px;
+  box-shadow: 0px 4px 14px 0px rgb(79 79 79 / 25%);
+}
+
+.message-container-right>p {
   margin: 0px;
   padding: 0px;
 }
+
+.message-container-left>p {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* .create-message-ticket {
+  display: flex;
+  flex-grow: inherit;
+} */

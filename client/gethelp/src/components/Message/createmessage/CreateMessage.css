@@ -1,16 +1,24 @@
 .create-message {
-  display: flex;
-  flex-direction: row;
-  /* justify-content: space-between; */
-  /* padding: 15px; */
+  padding: 15px;
   border-radius: 15px;
-  /* background-color: white; */
-  width: 100%;
+  background-color: rgb(125 167 185);
   margin-bottom: 15px;
-  /* box-shadow: 0px 4px 14px 0px rgb(79 79 79 / 25%); */
+  box-shadow: 0px 4px 14px 0px rgb(79 79 79 / 25%);
 }
 
-.create-fields>textarea {
+.create-message .create-fields-message>label {
+  font-size: 16px;
+}
+
+.text-area {
   display: flex;
-  /* width: 100%; */
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  border-bottom: 1px solid rgba(142, 142, 142, 0.3);
+  box-shadow: 0px 14px 14px 0px rgba(167, 167, 167, 0.1);
+  min-height: 53px;
+  width: 100%;
+  resize: vertical;
+  margin: 6px 0 5px 0;
 }
