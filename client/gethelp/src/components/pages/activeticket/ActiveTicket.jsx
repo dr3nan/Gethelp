@@ -23,6 +23,10 @@ const ActiveTicket = () => {
     dispatch(setActiveTicket(ticket));
   };
 
+  useEffect(() => {
+    getTicket()
+  }, []);
+
   // TODO: handleEdit
   // const handleEdit = async () => {
   //   setIsEditable(!isEditable)
@@ -37,9 +41,9 @@ const ActiveTicket = () => {
   //   }
   // };
 
-  useEffect(() => {
-    getTicket();
-  }, []);
+  // useEffect(() => {
+  //   getTicket();
+  // }, []);
 
   return (
     <>

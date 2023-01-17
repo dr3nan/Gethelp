@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUserByEmail as getUserFromAPI } from '../../api/apiUsers';
-import { isUserLogged } from '../../slices/UserSlice';
+import { activeUser, isUserLogged } from '../../slices/UserSlice';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -16,23 +16,36 @@ const Login = () => {
       password: formData.get('password'),
     }
     try {
-      const getUser = await getUserFromAPI(user.email);
-      dispatch(isUserLogged(getUser));
-      localStorage.setItem('user', JSON.stringify({ id: user._id, admin: user.admin }));
-      // if (!getUser) navigate('/login');
+      const userData = await getUserFromAPI(user.email);
+      console.log('get user from db', userData);
+      dispatch(activeUser(userData));
+      // localStorage.setItem('user', JSON.stringify({ id: user._id, admin: user.admin, name: user.name }));
+      localStorage.setItem('user', JSON.stringify({...userData, isLoggedIn: true}));
+      // if (!userData) navigate('/login');
       // else navigate('/ticket-list');
+      const userLogged = JSON.parse(localStorage.getItem('user'));
+      console.log('user localStorage', userLogged);
+      if (userLogged) {
+        // dispatch(isUserLogged({ id: user._id, admin: user.admin, name: user.name }));
+        dispatch(isUserLogged(userLogged));
+        console.log('helo');
+        navigate('/ticket-list');
+      }
     } catch (err) {
       console.error(err);
     }
   };
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      dispatch(isUserLogged(user));
-      navigate('/ticket-list');
-    }
-  }, [dispatch, navigate]);
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem('user'));
+  //   console.log('user localStorage', user);
+  //   if (user) {
+  //     // dispatch(isUserLogged({ id: user._id, admin: user.admin, name: user.name }));
+  //     dispatch(isUserLogged(user));
+  //     navigate('/ticket-list');
+  //   }
+  // }, [dispatch, navigate]);
+
 
   return (
     <form className='user-login' onSubmit={event => handleSubmit(event, dispatch)}>

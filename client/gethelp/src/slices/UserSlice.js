@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 // TODO: Change to object
+console.log('user in local storage',JSON.parse(localStorage.getItem('user')))
 const initialState = {
-  isLoggedIn: false,
-  user: {},
+  isLoggedIn: false
 };
 
 const userLoggedSlice = createSlice({
@@ -10,20 +10,23 @@ const userLoggedSlice = createSlice({
   initialState,
   reducers: {
     isUserLogged: (state, action) => {
-      state.isLoggedIn = true;
-      state.user = action.payload;
+      state = {...action.payload, isLoggedIn: true};
+      console.log('state',state);
+      return state;
     },
 
-    logou: (state) => {
+    logout: (state) => {
       state.isLoggedIn = false;
-      state.user = {};
+      // state.user = {};
     },
-    // isUserLogged: (state, action) => {
-    //   state.user = action.payload;
-    // }
+
+    activeUser: (state, action) => {
+      state = {...action.payload, isLoggedIn: true};
+      return state;
+    }
   }
 });
 
-export const { isUserLogged } = userLoggedSlice.actions;
+export const { isUserLogged, logout, activeUser } = userLoggedSlice.actions;
 
 export default userLoggedSlice.reducer;
