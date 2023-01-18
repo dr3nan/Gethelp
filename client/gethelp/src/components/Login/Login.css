@@ -1,5 +1,6 @@
 .login-app {
   margin-top: 18px;
+  margin-bottom: 17px;
   display: flex;
 }
 
@@ -43,7 +44,7 @@
   border: none;
   background-color: transparent;
   font-size: 17px;
-  color: white;
+  color: rgb(0, 0, 0);
   border-bottom: 1px solid #777;
   box-shadow: none !important;
   padding: 17px 6px 0px 6px;
