@@ -1,12 +1,22 @@
+.login-app {
+  margin-top: 18px;
+  display: flex;
+}
+
 .user-login {
   display: flex;
-  background-color: rgb(194, 237, 252);
+  background-color: rgb(221, 243, 252);
   border-radius: 40px;
-  width: 250px;
+  width: 350px;
+  height: 400px;
   flex-direction: column;
-  justify-content: space-between;
   padding: 18px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 18px 0px rgb(0 0 0 / 19%);
+  justify-content: center;
+}
+
+.user-login>label {
+  font-size: 50px;
 }
 
 .form-information {
@@ -75,7 +85,7 @@
   border: none;
   background-color: transparent;
   font-size: 17px;
-  color: white;
+  color: rgb(0, 0, 0);
   border-bottom: 1px solid #777;
   box-shadow: none !important;
   padding: 17px 6px 0px 7px;
@@ -108,7 +118,7 @@
   margin-left: 3px;
   border: none;
   background-color: black;
-  color: white;
+  color: rgb(0, 0, 0);
   height: 40px;
   width: 65px;
   border-radius: 30px;
@@ -119,7 +129,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* border: 1px solid red;< */
 }
 
 .register {
@@ -130,4 +139,15 @@
 .forgot {
   border: none;
   background-color: transparent;
+}
+
+.send-button {
+  margin-top: 10px;
+  display: flex;
+  align-self: center;
+  border: none;
+  border-radius: 5px;
+  height: 25px;
+  width: 45px;
+  background-color: rgba(255, 255, 255, 0.802);
 }

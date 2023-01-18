@@ -8,6 +8,8 @@
 
 .create-message .create-fields-message>label {
   font-size: 16px;
+  color: white;
+  font-weight: 500;
 }
 
 .text-area {
@@ -20,5 +22,20 @@
   min-height: 53px;
   width: 100%;
   resize: vertical;
-  margin: 6px 0 5px 0;
+  margin: 6px 0 10px 0;
+}
+
+.create-buttons-message>button {
+  border: none;
+  border-radius: 5px;
+  height: 25px;
+  width: 45px;
+  background-color: rgba(255, 255, 255, 0.802);
+  transition: 0.4s;
+}
+
+.create-buttons-message>button:hover {
+  background-color: rgb(124 166 184);
+  color: white;
+  border: 1px solid white;
 }

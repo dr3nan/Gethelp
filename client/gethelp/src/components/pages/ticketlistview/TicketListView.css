@@ -1,0 +1,20 @@
+.logout {
+  border: none;
+  border-radius: 5px;
+  height: 25px;
+  width: fit-content;
+  margin-bottom: 25px;
+  background-color: rgba(135, 187, 208);
+  transition: 0.3s;
+}
+
+.logout:hover {
+  background-color: rgb(224, 42, 25);
+  color: white;
+}
+
+.todo-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}

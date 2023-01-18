@@ -60,4 +60,15 @@
   height: 25px;
   width: 45px;
   background-color: rgba(135, 187, 208, 0.7);
+  transition: 0.4s;
+}
+
+.ticket-buttons>button:hover {
+  background-color: rgba(184, 234, 253, 0.7);
+}
+
+.ticket-buttons>buttons:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
 }

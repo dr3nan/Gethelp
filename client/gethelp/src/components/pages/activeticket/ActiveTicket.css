@@ -1,21 +1,38 @@
 .active-ticket-component {
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
   padding: 20px;
   width: 93%;
 }
 
+.top-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.back-button-active {
+  border: none;
+  border-radius: 5px;
+  height: 25px;
+  width: fit-content;
+  margin-bottom: 30px;
+  background-color: rgba(135, 187, 208, 0.7);
+  transition: 0.4s;
+}
+
+.back-button-active:hover {
+  background-color: rgba(184, 234, 253, 0.7);
+}
+
 .active-ticket-wrapper {
   display: flex;
-  /* justify-content: center; */
-  /* flex-direction: column; */
   width: 100%;
   background-color: rgb(221, 243, 252);
   border-radius: 15px;
   align-items: center;
-  padding: 70px 20px 0 20px;
+  padding: 20px 20px 0 20px;
 }
 
 .messages-list {
@@ -41,6 +58,37 @@
   box-shadow: 0px 4px 14px 0px rgb(79 79 79 / 25%);
 }
 
+.initial-message>p {
+  margin: 0px;
+  padding: 5px 0 5px 0;
+}
+
+.message-date {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.ticket-date {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.messsage-sender {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  align-self: flex-end;
+}
+
+.ticket-user {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  align-self: flex-end;
+}
+
 .message-container-right {
   float: right !important;
   display: flex;
@@ -48,7 +96,7 @@
   flex-direction: column;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
-  padding: 15px;
+  padding: 10px 15px 15px 15px;
   width: 88%;
   margin-bottom: 15px;
   box-shadow: 0px 4px 14px 0px rgb(79 79 79 / 25%);
@@ -69,15 +117,10 @@
 
 .message-container-right>p {
   margin: 0px;
-  padding: 0px;
+  padding: 5px 0 5px 0;
 }
 
 .message-container-left>p {
   margin: 0px;
-  padding: 0px;
+  padding: 5px 0 5px 0;
 }
-
-/* .create-message-ticket {
-  display: flex;
-  flex-grow: inherit;
-} */

@@ -44,7 +44,6 @@ const CreateTicket = () => {
   return (
     <div className='create-ticket'>
       <label className='header-new'>New Ticket</label>
-      {/* <h4>New Ticket</h4> */}
       <form onSubmit={event => handleSubmit(event, dispatch)}>
         <div className='create-fields'>
           <label htmlFor='title'>Title</label>

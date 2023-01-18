@@ -5,7 +5,6 @@ import { createMessageInTicketInUser as messageToTicketInUserAPI} from '../../..
 import { getUser as getUserFromAPI } from '../../../api/apiUsers';
 import { activeTicket as setActiveTicket, addMessageToTicket as addMessageToActiveTicket, userFromActiveTicket as setUserFromActiveTicket } from '../../../slices/ActiveTicketSlice'
 import { isUserLogged } from '../../../slices/UserSlice';
-// import './CreateMessage.css';
 
 const CreateMessage = () => {
   const dispatch = useDispatch();
@@ -14,8 +13,6 @@ const CreateMessage = () => {
   // we are receiving the active ticket from the reducer activeTicket (state), in the ActiveTicketSlice
   // we will receive the whole ticket by being in the ticket itself
   const activeTicket = useSelector((state) => state.activeTicket);
-
-  // console.log('user id', activeTicket._id);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,23 +24,18 @@ const CreateMessage = () => {
     }
     try {
       // call to update message in user ticket array inuser db
-      // console.log('Mira aqui ==>',user)
       await messageToTicketInUserAPI(user._id, activeTicket._id, message);
-      // get updated user from db
       dispatch(addMessageToActiveTicket(message));
       const userWithNewMessage = await getUserFromAPI(user._id);
-      // console.log('user with new message', userWithNewMessage);
-      // update the activeTicket state
-
       // update the user state
       dispatch(isUserLogged(userWithNewMessage));
     } catch (err) {
       console.error(err);
     }
-    // to reset input once submit
+    // reset input fields once submit
     event.target.reset();
   };
-  // TODO reset
+
   return (
     <div className='create-message'>
       <form onSubmit={event => handleSubmit(event)}>

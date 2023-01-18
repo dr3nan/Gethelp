@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import CreateMessage from '../../Message/createmessage/CreateMessage';
 import { getTicket as getTicketFromAPI } from '../../../api/apiTickets';
 import { useNavigate, useParams } from 'react-router-dom';
-import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice'
-import './ActiveTicket.css';
-import '../../Message/createmessage/CreateMessage.css';
+import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice';
 import { getDateFromDateString } from '../../../helpers/dateTools';
+import '../../Message/createmessage/CreateMessage.css';
+import './ActiveTicket.css';
 
 const ActiveTicket = () => {
   const { id } = useParams();
-  // const user = useSelector((user) => user);
   console.log('id only', id);
   const dispatch = useDispatch();
   const activeTicket = useSelector(state => state.activeTicket);
@@ -50,24 +49,32 @@ const ActiveTicket = () => {
 
   return (
     <div className='active-ticket-component'>
-      <button className='back-button-active' onClick={() => navigate(-1)}>Back</button>
+      <div className='top-buttons'>
+        <button className='back-button-active' onClick={() => navigate(-1)}>Tickets</button>
+      </div>
       <div className='active-ticket-wrapper'>
         <div className='messages-list'>
           {activeTicket && (
             <>
               <div className='initial-message'>
-                <p>{activeTicket.user}</p>
-                <p>{activeTicket.title}</p>
-                <p>{activeTicket.date}</p>
+                <p className='ticket-user'>{activeTicket.user}</p>
+                <p className='ticket-title'>{activeTicket.title}</p>
+                <p className='ticket-date'>{getDateFromDateString(activeTicket.date).toLocaleString('default', {
+                  minute: 'numeric',
+                  hour: 'numeric',
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric'
+                })}</p>
               </div>
               {activeTicket.messages?.map((message, index) => {
                 const containerClass = message.sender === activeTicket.user
                   ? 'message-container-right' : 'message-container-left';
                 return (
                   <div key={index} className={containerClass}>
-                    <p className='sender'>{message.sender}</p>
-                    <p className='message'>{message.message}</p>
-                    <p className='date'>{getDateFromDateString(message.date).toLocaleString('default', {
+                    <p className='messsage-sender'>{message.sender}</p>
+                    <p className='message-message'>{message.message}</p>
+                    <p className='message-date'>{getDateFromDateString(message.date).toLocaleString('default', {
                       minute: 'numeric',
                       hour: 'numeric',
                       day: 'numeric',

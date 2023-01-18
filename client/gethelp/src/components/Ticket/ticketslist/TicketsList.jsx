@@ -50,7 +50,7 @@ const TicketsList = () => {
     <div className='ticket-list'>
       {user.admin ? (
         <>
-          <h2>Admin Tickets</h2>
+          <label className='ticket-list-label'>Active tickets</label>
           {adminTickets.map((ticket) => (
             <Ticket key={ticket._id} ticket={ticket} />
           ))}
