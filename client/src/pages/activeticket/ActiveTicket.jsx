@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CreateMessage from '../../Message/createmessage/CreateMessage';
-import { getTicket as getTicketFromAPI } from '../../../api/apiTickets';
+import CreateMessage from '../../components/Message/createmessage/CreateMessage';
+import { getTicket as getTicketFromAPI } from '../../api/apiTickets';
 import { useNavigate, useParams } from 'react-router-dom';
-import { activeTicket as setActiveTicket } from '../../../slices/ActiveTicketSlice';
-import { getDateFromDateString } from '../../../helpers/dateTools';
-import '../../Message/createmessage/CreateMessage.css';
+import { activeTicket as setActiveTicket } from '../../slices/ActiveTicketSlice';
+import { getDateFromDateString } from '../../helpers/dateTools';
+import '../../components/Message/createmessage/CreateMessage.css';
 import './ActiveTicket.css';
 
 const ActiveTicket = () => {

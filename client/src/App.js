@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ActiveTicket from './components/pages/activeticket/ActiveTicket';
-import TicketListView from './components/pages/ticketlistview/TicketListView';
-import LoginView from './components/pages/loginview/LoginView';
+import LoginView from './pages/loginview/LoginView';
+import TicketListView from './pages/ticketlistview/TicketListView';
+import ActiveTicket from './pages/activeticket/ActiveTicket';
+// import ActiveTicket from './components/pages/activeticket/ActiveTicket';
+// import TicketListView from './components/pages/ticketlistview/TicketListView';
+// import LoginView from './components/pages/loginview/LoginView';
 
 function App() {
 

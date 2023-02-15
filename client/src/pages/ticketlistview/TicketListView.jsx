@@ -1,15 +1,15 @@
-import TicketList from '../../Ticket/ticketslist/TicketsList';
-// import TodoApp from '../../Todo/todoapp/TodoApp';
-import CreateTicket from '../../Ticket/createticket/CreateTicket';
+import TicketList from '../../components/Ticket/ticketslist/TicketsList';
+import TodoApp from '../../components/Todo/todoapp/TodoApp';
+import CreateTicket from '../../components/Ticket/createticket/CreateTicket';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { isUserLogged } from '../../../slices/UserSlice';
+import { isUserLogged } from '../../slices/UserSlice';
 import './TicketListView.css';
-import '../../Todo/todoapp/TodoApp.css';
-import '../../Todo/createtodo/CreateTodo.css';
-// import { setTodos } from '../../../slices/TodoSlice';
-// import { getToDos } from '../../../api/apiTodos';
+import '../../components/Todo/todoapp/TodoApp.css';
+import '../../components/Todo/createtodo/CreateTodo.css';
+import { setTodos } from '../../slices/TodoSlice';
+import { getToDos } from '../../api/apiTodos';
 
 const TicketListView = () => {
   const navigate = useNavigate();
@@ -22,14 +22,14 @@ const TicketListView = () => {
     navigate('/login');
   };
 
-  // const fetchTodos = async () => {
-  //   const todosFromDB = await getToDos();
-  //   dispatch(setTodos(todosFromDB));
-  // };
+  const fetchTodos = async () => {
+    const todosFromDB = await getToDos();
+    dispatch(setTodos(todosFromDB));
+  };
 
-  // useEffect(() => {
-  //   fetchTodos();
-  // }, []);
+  useEffect(() => {
+    fetchTodos();
+  }, []);
 
   useEffect(() => {
     if (!user.isLoggedIn) {
@@ -46,7 +46,7 @@ const TicketListView = () => {
       <div className='todo-list'>
         {user.admin ? (
           <>
-            {/* {<TodoApp />} */}
+            {<TodoApp />}
           </>
         ) : null}
       </div>
