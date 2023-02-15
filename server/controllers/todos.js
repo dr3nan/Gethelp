@@ -1,13 +1,11 @@
 import Todos from '../models/todos.js';
 
-export const getTodos = async (req, res) => {
+export const getAllTodos = async (req, res) => {
   try {
-    const get = await Todos.find();
-    res.status(200);
-    res.send(get);
-  } catch (err) {
-    console.error(err);
-    res.status(500);
+    const todos = await Todos.find();
+    res.send(todos);
+  } catch (error) {
+    console.error(error)
   }
 };
 
@@ -40,7 +38,7 @@ export const updateTodo = async (req, res) => {
     if (req.body.title) {
       upd.title = req.body.title;
     }
-    console.log(req.body);
+    // console.log(req.body);
 
     if (req.body.note) {
       upd.note = req.body.note;

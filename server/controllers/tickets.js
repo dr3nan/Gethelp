@@ -1,6 +1,7 @@
 import Tickets from '../models/tickets.js';
 import Users from '../models/users.js';
 import * as mongoose from 'mongoose';
+
 export const getTickets = async (req, res) => {
   try {
     const get = await Tickets.find();

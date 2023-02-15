@@ -151,4 +151,5 @@
   height: 25px;
   width: 45px;
   background-color: rgba(255, 255, 255, 0.802);
+  cursor: pointer;
 }
