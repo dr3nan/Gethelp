@@ -9,10 +9,14 @@ import ToDo from '../todo/Todo';
 const ToDoList = () => {
   const dispatch = useDispatch();
 
-  const todos = useSelector(({ todos }) => todos);
+  const todos = useSelector(({ todos }) => {
+    console.log('file: TodoList.jsx:15 ~~> todos', todos)
+    return todos;
+  });
 
   const fetchTodos = async () => {
     const todosFromDB = await getToDos();
+    console.log('file: TodoList.jsx:16 ~~> fetchTodos ~~> todosFromDB', todosFromDB)
     if (!todosFromDB) return console.log('no todos in db');
     else dispatch(setTodos(todosFromDB));
     // return todosFromDB;

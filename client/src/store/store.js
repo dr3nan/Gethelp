@@ -16,7 +16,7 @@ if (preloadedStateSTR) {
 
 const store = configureStore({
   reducer: {
-    todo: todoReducer,
+    todos: todoReducer,
     tickets: ticketReducer,
     messages: messagesReducer,
     activeTicket: activeTicketReducer,

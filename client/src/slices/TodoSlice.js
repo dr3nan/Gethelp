@@ -10,7 +10,6 @@ const todoSlice = createSlice({
       state.name = ''
       state.date = ''
       state.note = ''
-      // console.log('state', state);
     },
 
     setTodos: (state, action) => {
