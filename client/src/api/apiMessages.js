@@ -3,7 +3,7 @@ import { BASE_URL } from './constants';
 export const getMessages = async (ticketId) => {
   try {
     const response = await fetch(`${BASE_URL}/ticket/${ticketId}/messages`);
-    console.log('response', response);
+    // console.log('response', response);
     return await response.json();
   } catch (err) {
     console.error(err);
@@ -26,7 +26,7 @@ export const addMessage = async (ticketId, messageToAdd) => {
 };
 
 export const createMessageInTicketInUser = async (userId, ticketId, messageToAdd) => {
-  console.log('methods in api call:', userId, ticketId, messageToAdd);
+  // console.log('methods in api call:', userId, ticketId, messageToAdd);
   try {
     const response = await fetch(`${BASE_URL}/user/${userId}/tickets/${ticketId}/messages`, {
       method: 'POST',

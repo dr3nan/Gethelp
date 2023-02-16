@@ -10,10 +10,10 @@ import './ActiveTicket.css';
 
 const ActiveTicket = () => {
   const { id } = useParams();
-  console.log('id only', id);
+  // console.log('id only', id);
   const dispatch = useDispatch();
   const activeTicket = useSelector(state => state.activeTicket);
-  console.log('active ticket', activeTicket);
+  // console.log('active ticket', activeTicket);
   const navigate = useNavigate();
   // TODO: part of the handleEdit
   // const [isEditable, setIsEditable] = useState(false);
@@ -21,7 +21,7 @@ const ActiveTicket = () => {
 
   const getTicket = async () => {
     const ticket = await getTicketFromAPI(id);
-    console.log('ticket', ticket);
+    // console.log('ticket', ticket);
     dispatch(setActiveTicket(ticket));
   };
 

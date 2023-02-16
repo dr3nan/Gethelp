@@ -6,17 +6,17 @@ import activeTicketReducer from '../slices/ActiveTicketSlice';
 import userReducer from '../slices/UserSlice';
 
 const preloadedStateSTR = localStorage.getItem('user');
-console.log({ preloadedStateSTR });
+// console.log({ preloadedStateSTR });
 let preloadedState;
 if (preloadedStateSTR) {
-  console.log('inside the if');
+  // console.log('inside the if');
   preloadedState = JSON.parse(preloadedStateSTR);
-  console.log({ preloadedState });
+  // console.log({ preloadedState });
 };
 
 const store = configureStore({
   reducer: {
-    todo: todoReducer,
+    todos: todoReducer,
     tickets: ticketReducer,
     messages: messagesReducer,
     activeTicket: activeTicketReducer,

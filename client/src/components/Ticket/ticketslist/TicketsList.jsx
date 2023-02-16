@@ -13,7 +13,7 @@ const TicketsList = () => {
   // const navigate = useNavigate();
   // we retrieve current user from store
   const user = useSelector(({ user }) => user);
-  console.log('user active', user);
+  // console.log('user active', user);
 
   // we retrieve all tickets from store
   const adminTickets = useSelector(state => state.tickets);

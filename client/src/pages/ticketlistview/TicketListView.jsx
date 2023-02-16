@@ -8,8 +8,8 @@ import { isUserLogged } from '../../slices/UserSlice';
 import './TicketListView.css';
 import '../../components/Todo/todoapp/TodoApp.css';
 import '../../components/Todo/createtodo/CreateTodo.css';
-import { setTodos } from '../../slices/TodoSlice';
-import { getToDos } from '../../api/apiTodos';
+// import { setTodos } from '../../slices/TodoSlice';
+// import { getToDos } from '../../api/apiTodos';
 
 const TicketListView = () => {
   const navigate = useNavigate();
@@ -22,14 +22,14 @@ const TicketListView = () => {
     navigate('/login');
   };
 
-  const fetchTodos = async () => {
-    const todosFromDB = await getToDos();
-    dispatch(setTodos(todosFromDB));
-  };
+  // const fetchTodos = async () => {
+  //   const todosFromDB = await getToDos();
+  //   dispatch(setTodos(todosFromDB));
+  // };
 
-  useEffect(() => {
-    fetchTodos();
-  }, []);
+  // useEffect(() => {
+  //   fetchTodos();
+  // }, []);
 
   useEffect(() => {
     if (!user.isLoggedIn) {
