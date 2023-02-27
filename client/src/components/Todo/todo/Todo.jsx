@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { editToDo as updateTodoAPI, deleteToDo as deleteTodoAPI } from '../../../api/apiTodos';
 import { getDateFromDateString } from '../../../helpers/dateTools';
 import { deleteTodo, editTodo } from '../../../slices/TodoSlice';
+import './Todo.css';
 
 const ToDo = ({ todo }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,12 @@ const ToDo = ({ todo }) => {
           value={title}
           onChange={e => setTitle(e.target.value)}
         />
-        <br />
+        <input
+          type='text'
+          readOnly={!isEditable}
+          value={note}
+          onChange={e => setNote(e.target.value)}
+        />
         <input
           type='text'
           readOnly={!isEditable}
@@ -54,13 +60,6 @@ const ToDo = ({ todo }) => {
             year: 'numeric'
           })}
           onChange={e => setDate(e.target.value)}
-        />
-        <br />
-        <input
-          type='text'
-          readOnly={!isEditable}
-          value={note}
-          onChange={e => setNote(e.target.value)}
         />
       </div>
       <div className='buttons-todo'>
