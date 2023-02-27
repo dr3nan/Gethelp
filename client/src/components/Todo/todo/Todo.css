@@ -1,0 +1,37 @@
+.todo-list-in-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid red;
+  padding: 25px;
+}
+
+/* .solo-todos-in-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border: 1px solid pink;
+}
+
+.fields-todo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-row-gap: 5px;
+  align-items: center;
+}
+
+.buttons-todo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 40px;
+  gap: 5px;
+  align-items: flex-end;
+}
+
+.input-note {
+  grid-column: 1 / span 2;
+  width: 100%;
+} */

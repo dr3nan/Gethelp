@@ -6,12 +6,9 @@ import activeTicketReducer from '../slices/ActiveTicketSlice';
 import userReducer from '../slices/UserSlice';
 
 const preloadedStateSTR = localStorage.getItem('user');
-// console.log({ preloadedStateSTR });
 let preloadedState;
 if (preloadedStateSTR) {
-  // console.log('inside the if');
   preloadedState = JSON.parse(preloadedStateSTR);
-  // console.log({ preloadedState });
 };
 
 const store = configureStore({

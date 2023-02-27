@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { editToDo as updateTodoAPI, deleteToDo as deleteTodoAPI } from '../../../api/apiTodos';
 import { getDateFromDateString } from '../../../helpers/dateTools';
 import { deleteTodo, editTodo } from '../../../slices/TodoSlice';
+import './Todo.css';
 
 const ToDo = ({ todo }) => {
   const dispatch = useDispatch();
@@ -34,38 +35,40 @@ const ToDo = ({ todo }) => {
   };
 
   return (
-    <div className='solo-todo'>
-      <div className='fields-todo'>
-        <input
-          type='text'
-          readOnly={!isEditable}
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
-        <br />
-        <input
-          type='text'
-          readOnly={!isEditable}
-          value={getDateFromDateString(date).toLocaleString('default', {
-            minute: 'numeric',
-            hour: 'numeric',
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric'
-          })}
-          onChange={e => setDate(e.target.value)}
-        />
-        <br />
-        <input
-          type='text'
-          readOnly={!isEditable}
-          value={note}
-          onChange={e => setNote(e.target.value)}
-        />
-      </div>
-      <div className='buttons-todo'>
-        <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
-        <button onClick={() => handleDelete(todo)}>X</button>
+    <div className='todos-list-in-app'>
+      <div className='solo-todos-in-list'>
+        <div className='fields-todo'>
+          <input
+            type='text'
+            readOnly={!isEditable}
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+          <input
+            type='text'
+            readOnly={!isEditable}
+            value={getDateFromDateString(date).toLocaleString('default', {
+              minute: 'numeric',
+              hour: 'numeric',
+              day: 'numeric',
+              month: 'short',
+              year: 'numeric'
+            })}
+            onChange={e => setDate(e.target.value)}
+          />
+          <br />
+          <input
+            type='text'
+            className='input-note'
+            readOnly={!isEditable}
+            value={note}
+            onChange={e => setNote(e.target.value)}
+          />
+        </div>
+        <div className='buttons-todo'>
+          <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
+          <button onClick={() => handleDelete(todo)}>X</button>
+        </div>
       </div>
     </div>
   );

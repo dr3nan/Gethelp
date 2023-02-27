@@ -5,8 +5,12 @@ import ToDoList from '../todolist/TodoList';
 const TodoApp = () => {
   return (
     <div className='todo-app'>
-      <ToDoList />
-      <CreateToDo />
+      <div className='create-todo-app'>
+        <CreateToDo />
+      </div>
+      <div className='todo-list-app'>
+        <ToDoList />
+      </div>
     </div>
   );
 };

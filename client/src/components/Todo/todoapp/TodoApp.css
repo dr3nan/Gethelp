@@ -1,10 +1,25 @@
 .todo-app {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 25px;
+  border: 1px solid green;
   padding: 25px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-bottom: 20px;
+}
+
+.create-todo-app {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.todo-list-app {
+  display: flex;
+  flex-direction: column;
+  padding-left: 25px;
+  max-width: 600px;
+  min-width: 200px;
 }
