@@ -18,6 +18,12 @@ const Login = () => {
     }
     try {
       const userData = await getUserFromAPI(user.email);
+      console.log('user data from api', userData);
+      if (!userData) {
+        alert('User not found');
+        return;
+      }
+
       dispatch(activeUser(userData));
       localStorage.setItem('user', JSON.stringify({ ...userData, isLoggedIn: true }));
       const userLogged = JSON.parse(localStorage.getItem('user'));

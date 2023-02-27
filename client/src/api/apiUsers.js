@@ -11,7 +11,12 @@ export const getUser = async (userId) => {
 
 export const getUserByEmail = async (email) => {
   try {
-    const response = await fetch(`${BASE_URL}/${email}`);
+    const response = await fetch(`${BASE_URL}/user/email/${email}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
     return await response.json()
   } catch (err) {
     console.error(err)

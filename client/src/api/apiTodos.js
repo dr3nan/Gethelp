@@ -2,8 +2,8 @@ import { BASE_URL } from './constants';
 
 export const getToDos = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/getTodos`);
-    return await response.json();
+    const response = await fetch(`${BASE_URL}/allTodos`);
+    return response.json();
   } catch (err) {
     console.error(err);
   }

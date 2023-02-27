@@ -3,7 +3,7 @@ import { BASE_URL } from './constants';
 export const getTickets = async () => {
   try {
     const response = await fetch(`${BASE_URL}/getTickets`);
-    return await response.json();
+    return response.json();
   } catch (err) {
     console.error(err);
   }
