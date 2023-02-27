@@ -1,0 +1,10 @@
+.rendered-todo-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid red;
+  /* padding: 25px; */
+  overflow: scroll;
+  height: 140px;
+}
