@@ -27,7 +27,8 @@ const ToDoList = () => {
         todos.length > 0 ? todos?.map(todo => {
           return <ToDo key={todo._id} todo={todo} />
         })
-        : <h4>Create a new Todo</h4>
+          :
+          <h4>Create a new Todo</h4>
       }
     </div>
   )

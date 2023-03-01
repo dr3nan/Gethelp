@@ -5,7 +5,6 @@ import { setMessages } from '../../../slices/MessageSlice';
 import CreateMessage from '../createmessage/CreateMessage';
 import Message from '../message/Message';
 
-// TODO: this component should render messages from specific user ticket, not just all messages
 const MessageList = () => {
   const dispatch = useDispatch();
 
@@ -13,7 +12,6 @@ const MessageList = () => {
 
   const fetchMessages = async () => {
     const messagesFromDataBase = await getMessagesAPI();
-    // console.log('ticketsfromDB', ticketsFromDataBase)
     dispatch(setMessages(messagesFromDataBase))
   };
 
