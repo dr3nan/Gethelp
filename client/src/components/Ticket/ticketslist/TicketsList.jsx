@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import { getTickets as getTicketsAPI } from '../../../api/apiTickets';
 import { getUser as getUserFromAPI } from '../../../api/apiUsers';
 import { setTickets } from '../../../slices/TicketSlice';
@@ -10,10 +9,8 @@ import './TicketsList.css';
 
 const TicketsList = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   // we retrieve current user from store
   const user = useSelector(({ user }) => user);
-  // console.log('user active', user);
 
   // we retrieve all tickets from store
   const adminTickets = useSelector(state => state.tickets);
@@ -28,12 +25,6 @@ const TicketsList = () => {
     const userFromDataBase = await getUserFromAPI(user._id);
     dispatch(isUserLogged(userFromDataBase));
   };
-
-  // useEffect(() => {
-  //   if (!user.isLoggedIn) {
-  //     navigate('/login');
-  //   }
-  // }, [user, navigate]);
 
   useEffect(() => {
     fetchCurrentUserWithTickets()

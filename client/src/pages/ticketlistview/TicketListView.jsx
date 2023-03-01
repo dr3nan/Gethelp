@@ -8,8 +8,6 @@ import { isUserLogged } from '../../slices/UserSlice';
 import './TicketListView.css';
 import '../../components/Todo/todoapp/TodoApp.css';
 import '../../components/Todo/createtodo/CreateTodo.css';
-// import { setTodos } from '../../slices/TodoSlice';
-// import { getToDos } from '../../api/apiTodos';
 
 const TicketListView = () => {
   const navigate = useNavigate();
@@ -22,15 +20,6 @@ const TicketListView = () => {
     navigate('/login');
   };
 
-  // const fetchTodos = async () => {
-  //   const todosFromDB = await getToDos();
-  //   dispatch(setTodos(todosFromDB));
-  // };
-
-  // useEffect(() => {
-  //   fetchTodos();
-  // }, []);
-
   useEffect(() => {
     if (!user.isLoggedIn) {
       navigate('/login');
@@ -38,7 +27,7 @@ const TicketListView = () => {
   }, []);
 
   if (!user) return 'user not logged in';
-  //  TODO: todo app needs changes to be updated
+  
   return (
     <>
       <span className='active-userName'>{user.nickname}</span>
