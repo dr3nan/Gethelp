@@ -23,11 +23,11 @@ const ToDoList = () => {
 
   return (
     <div className='rendered-todo-list'>
-      {/* <h4>list</h4> */}
       {
-        todos?.map(todo => {
+        todos.length > 0 ? todos?.map(todo => {
           return <ToDo key={todo._id} todo={todo} />
         })
+        : <h4>Create a new Todo</h4>
       }
     </div>
   )
