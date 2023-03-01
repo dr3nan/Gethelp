@@ -36,7 +36,6 @@ const ToDo = ({ todo }) => {
 
   return (
     <div className='solo-todos-in-list'>
-      {/* <div className='fields-todo'> */}
       <input
         type='text'
         className='input-title'
@@ -64,7 +63,6 @@ const ToDo = ({ todo }) => {
         value={note}
         onChange={e => setNote(e.target.value)}
       />
-      {/* </div> */}
       <div className='spacer-buttons'>
         <div className='buttons-todo'>
           <button onClick={handleEdit}>{isEditable ? 'Save' : 'Edit'}</button>
