@@ -1,3 +1,42 @@
 .create-todo {
   display: flex;
 }
+
+.fields-create {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  margin-bottom: 10px;
+}
+
+.fields-create input {
+  width: 100%;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid rgb(138 138 138 / 40%);
+}
+
+.buttons-create {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.buttons-create>button {
+  border: none;
+  border-radius: 5px;
+  height: 25px;
+  width: 45px;
+  background-color: rgba(135, 187, 208, 0.7);
+  transition: 0.4s;
+}
+
+.buttons-create>button:hover {
+  background-color: rgba(184, 234, 253, 0.7);
+}
+
+.buttons-create>button:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}

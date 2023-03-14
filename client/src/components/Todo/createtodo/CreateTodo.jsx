@@ -37,7 +37,6 @@ function CreateToDo() {
             name='title'
             id='title'
           />
-          <br />
           <label htmlFor='date'>Date</label>
           <input
             type='datetime-local'
@@ -45,7 +44,6 @@ function CreateToDo() {
             id='date'
             min={new Date().toISOString().slice(0, 16)}
           />
-          <br />
           <label htmlFor='note'>Notes</label>
           <input
             name='note'
