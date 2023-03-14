@@ -33,7 +33,6 @@ export const createMessage = async (req, res) => {
 
 export const createMessageInUserTicket = async (req, res) => {
   try {
-    // console.log('health', req.params.ticketId);
     const newMessage = { id: req.body.id, message: req.body.message, sender: req.body.sender, date: req.body.date };
 
     const user = await Users.findOneAndUpdate(

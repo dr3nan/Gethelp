@@ -24,8 +24,6 @@ export const getUser = async (req, res) => {
 
 export const getUserByMail = async (req, res) => {
   try {
-    // const { email } = req.params;
-    console.log('email from request ============>', req.params.email);
     const user = await Users.findOne({ email: req.params.email });
     res.status(200);
     res.send(user);

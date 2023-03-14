@@ -38,7 +38,6 @@ export const updateTodo = async (req, res) => {
     if (req.body.title) {
       upd.title = req.body.title;
     }
-    // console.log(req.body);
 
     if (req.body.note) {
       upd.note = req.body.note;
