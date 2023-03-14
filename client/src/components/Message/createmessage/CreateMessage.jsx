@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { addMessage as addMessageToTicketAPI, createMessageInTicketInUser as messageToTicketInUserAPI} from '../../../api/apiMessages';
 import { createMessageInTicketInUser as messageToTicketInUserAPI } from '../../../api/apiMessages';
 import { getUser as getUserFromAPI } from '../../../api/apiUsers';
-import { activeTicket as setActiveTicket, addMessageToTicket as addMessageToActiveTicket, userFromActiveTicket as setUserFromActiveTicket } from '../../../slices/ActiveTicketSlice'
+import { activeTicket as setActiveTicket, addMessageToTicket as addMessageToActiveTicket } from '../../../slices/ActiveTicketSlice'
 import { isUserLogged } from '../../../slices/UserSlice';
 
 const CreateMessage = () => {
